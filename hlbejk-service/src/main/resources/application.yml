@@ -1,0 +1,17 @@
+server:
+  port: 30021
+
+spring:
+  application:
+    name: hlbejk-service
+  profiles:
+    active: dev
+#  devtools:
+#    restart:
+#      enabled: true
+
+ribbon:
+  eureka:
+    enabled: false
+  ReadTimeout: 30000
+  ConnectTimeout: 30000

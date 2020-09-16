@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.DaymonitorDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.api.vo.DaymonitorVO" id="daymonitorMap">
+
+        <result property="accapidata" column="accApiData"/>
+        <result property="accmodeldata" column="accModelData"/>
+        <result property="accdatatraffic" column="accDataTraffic" />
+
+        <result property="date" column="date"/>
+        <result property="accnum" column="accNum"/>
+        <result property="applynum" column="applyNum"/>
+        <result property="monitorid" column="monitorId"/>
+    </resultMap>
+
+    <select id="list" resultMap="daymonitorMap">
+        select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
+        date_format(dy.date,'%Y-%m-%d') date,sum(accNum) accNum,sum(applyNum) applyNum
+         from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
+        where date_format(dy.date,'%Y-%m-%d') = #{param.day}
+    </select>
+</mapper>
