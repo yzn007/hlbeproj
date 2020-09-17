@@ -21,4 +21,6 @@ import java.util.Map;
 @Mapper
 public interface DaymonitorDao extends BaseMapper<Daymonitor> {
     List<DaymonitorVO> list(@Param("param")Map param);
+    List<DaymonitorVO> listByDate(@Param("param")Map param);
+    List<DaymonitorVO> listDistictData(@Param("param")Map param);
 }

@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.annotation.Transient;
 
 import java.util.Date;
 
@@ -31,6 +32,12 @@ public class Daymonitor implements Serializable {
 	 */
 	@TableId(value = "id", type = IdType.INPUT)
 	private String id;
+
+	/**
+	 * 行政区划代码
+	 */
+	@Transient
+	private transient String districtcode;
 	
 	/**
 	 * 调用接口流量
@@ -51,6 +58,12 @@ public class Daymonitor implements Serializable {
 	 * 日期
 	 */
 	private Date date;
+
+	/**
+	 * 年月
+	 */
+	@Transient
+	private transient String yearmnnth;
 
 	/**
 	 * 调用次数

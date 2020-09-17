@@ -9,17 +9,41 @@
         <result property="accapidata" column="accApiData"/>
         <result property="accmodeldata" column="accModelData"/>
         <result property="accdatatraffic" column="accDataTraffic" />
-
         <result property="date" column="date"/>
         <result property="accnum" column="accNum"/>
         <result property="applynum" column="applyNum"/>
         <result property="monitorid" column="monitorId"/>
+        <result property="districtcode" column="districtCode"/>
+        <result property="yearmonth" column="yearmonth"/>
     </resultMap>
 
     <select id="list" resultMap="daymonitorMap">
         select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
-        date_format(dy.date,'%Y-%m-%d') date,sum(accNum) accNum,sum(applyNum) applyNum
+        date_format(dy.date,'%Y-%m-%d') date,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
          from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
         where date_format(dy.date,'%Y-%m-%d') = #{param.day}
     </select>
+
+    <!-- 根据地区排名返回合计 -->
+    <select id="listDistictData" resultMap="daymonitorMap">
+        select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
+        date_format(dy.date,'%Y-%m') yearmonth,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
+        from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
+        group by ur.districtcode
+        <if test="param.isOrder!=''">
+            order by sum(accDataTraffic) desc
+        </if>
+    </select>
+    <!-- 根据年月返回合计 -->
+    <select id="listByDate" resultMap="daymonitorMap">
+        <![CDATA[
+            select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
+            date_format(dy.date,'%Y-%m') yearmonth,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
+            from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
+            where position( #{param.yearMonth} in date_format(dy.date,'%Y-%m'))>0
+            group by date_format(dy.date,'%Y-%m')
+        ]]>
+    </select>
+
+
 </mapper>

@@ -90,6 +90,16 @@ public class DaymonitorController implements IDaymonitorController{
         return daymonitorService.list(day);
     }
 
+    @Override
+    public List<DaymonitorVO> listByDate(String yearMonth) {
+        return daymonitorService.listByDate(yearMonth);
+    }
+
+    @Override
+    public List<DaymonitorVO> listDistictData(String isOrder) {
+        return daymonitorService.listDistictData(isOrder);
+    }
+
 //    /**
 //     * 删除
 //     */

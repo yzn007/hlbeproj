@@ -9,6 +9,7 @@ import com.seaboxdata.hlbejk.service.modules.service.DaymonitorService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
 import jdk.nashorn.internal.objects.annotations.Where;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,10 +24,18 @@ public class DaymonitorServiceImpl extends ServiceImpl<DaymonitorDao, Daymonitor
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if(null!=params && null!=params.get("key")&&!StringUtils.isEmpty(params.get("key").toString())){
+            queryWrapper.eq("id",params.get("key"));
+        }
+
         IPage<Daymonitor> page = this.page(
                 new Query<Daymonitor>().getPage(params),
-                new QueryWrapper<>()
+                queryWrapper
         );
+
+
+
 
         return new PageUtils(page);
     }
@@ -73,6 +82,22 @@ public class DaymonitorServiceImpl extends ServiceImpl<DaymonitorDao, Daymonitor
 //            listDays.add(Daymonitor.toEntity(vo));
 //        }
 //        page.setRecords(listDays);
+        return listVo;
+    }
+
+    @Override
+    public List<DaymonitorVO> listByDate(String yearMonth) {
+        Map <String,Object> param = new CaseInsensitiveMap<>();
+        param.put("yearMonth",yearMonth);
+        List<DaymonitorVO> listVo = super.baseMapper.listByDate(param);
+        return listVo;
+    }
+
+    @Override
+    public List<DaymonitorVO> listDistictData(String isOrder) {
+        Map <String,Object> param = new CaseInsensitiveMap<>();
+        param.put("isOrder",isOrder);
+        List<DaymonitorVO> listVo = super.baseMapper.listDistictData(param);
         return listVo;
     }
 

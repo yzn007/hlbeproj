@@ -32,8 +32,6 @@ public interface IDaymonitorController {
     PageUtils list(@RequestParam Map<String, Object> params);
 
 
-
-
     /**
      * 详细信息
      */
@@ -69,4 +67,22 @@ public interface IDaymonitorController {
     @ApiOperation(value = "指定日期查询")
     @GetMapping("/hlbejk/daymonitor/list1")
     List<DaymonitorVO> listQ(@RequestParam String day);
+
+    /**
+     * 返回指定年月数据
+     * @param yearMonth
+     */
+    @ApiOperation(value = "返回指定年月数据")
+    @GetMapping("/hlbejk/daymonitor/listByDate")
+    List<DaymonitorVO> listByDate(@RequestParam String yearMonth);
+
+
+    /**
+     * 返回地区数据
+     * @param isOrder
+     * @return
+     */
+    @ApiOperation(value = "返回地区数据")
+    @GetMapping("/hlbejk/daymonitor/listByDistrict")
+    List<DaymonitorVO> listDistictData(@RequestParam String isOrder);
 }

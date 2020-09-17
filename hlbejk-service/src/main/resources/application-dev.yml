@@ -13,7 +13,7 @@ spring:
     timeout: 5000
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.217.17.117:3316/yunyingjianguan?serverTimezone=GMT%2B8&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://10.217.17.117:3316/yunyingjianguan?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: yyjg
     password: yyjgpassword
     hikari:

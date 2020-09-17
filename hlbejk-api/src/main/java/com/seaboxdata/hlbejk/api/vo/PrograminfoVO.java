@@ -2,6 +2,8 @@ package com.seaboxdata.hlbejk.api.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -70,6 +72,7 @@ public class PrograminfoVO implements Serializable {
 	/**
 	 * 更新时间
 	 */
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
 	@ApiModelProperty(value = "更新时间")
 	private Date updatetime;
 

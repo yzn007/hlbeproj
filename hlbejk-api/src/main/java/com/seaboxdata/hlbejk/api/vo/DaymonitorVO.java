@@ -1,6 +1,8 @@
 package com.seaboxdata.hlbejk.api.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
+
+import java.beans.Transient;
 import java.math.BigDecimal;
 import java.io.Serializable;
 
@@ -39,9 +41,12 @@ public class DaymonitorVO implements Serializable {
 	/**
 	 * 
 	 */
-	@JsonIgnore
-	@ApiModelProperty(value = "用户监控主键",name="monitorid")
+	@ApiModelProperty(value = "用户监控主键",name="monitorid",required = true)
 	private String monitorid;
+
+	@JsonIgnore
+	@ApiModelProperty(value = "行政区划代码",name="districtcode")
+	private String districtcode;
 
 	@ApiModelProperty(value = "主键", name = "id", required = true)
 	private String id;
@@ -58,6 +63,9 @@ public class DaymonitorVO implements Serializable {
 	@ApiModelProperty(value = "日期", name = "date", required = true)
 	@JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
 	private Date date;
+
+	@ApiModelProperty(value = "年月", name = "yearmonth", required = true)
+	private transient String yearmonth;
 
 	@ApiModelProperty(value = "调用次数", name = "accnum", required = true)
 	private int accnum;

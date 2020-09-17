@@ -28,5 +28,9 @@ public interface DaymonitorService extends IService<Daymonitor> {
     Boolean update(Daymonitor daymonitor);
 
     List<DaymonitorVO> list(String day);
+
+    List<DaymonitorVO> listByDate(String dayMonth);
+
+    List<DaymonitorVO> listDistictData(String isOrder);
 }
 

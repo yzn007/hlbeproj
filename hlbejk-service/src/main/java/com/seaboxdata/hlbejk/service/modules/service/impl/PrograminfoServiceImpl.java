@@ -7,7 +7,11 @@ import com.seaboxdata.hlbejk.service.modules.service.PrograminfoService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
 import org.springframework.stereotype.Service;
-import java.util.Map;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +27,17 @@ public class PrograminfoServiceImpl extends ServiceImpl<PrograminfoDao, Programi
                 new QueryWrapper<>()
         );
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+
+        List<Programinfo> list = page.getRecords();
+        for(Programinfo p:list){
+            try {
+                p.setUpdatetime(sdf.parse(sdf.format(p.getUpdatetime())));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         return new PageUtils(page);
     }
 
