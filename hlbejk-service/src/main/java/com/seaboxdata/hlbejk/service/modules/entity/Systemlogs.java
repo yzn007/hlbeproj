@@ -67,6 +67,12 @@ public class Systemlogs implements Serializable {
 	 */
 	private String remote;
 
+
+	/**
+	 * 操作时间
+	 */
+	private String operdate;
+
 	/**
 	 * 状态
 	 */

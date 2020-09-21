@@ -74,5 +74,4 @@ public class DaymonitorVO implements Serializable {
 	private int applynum;
 
 
-
 }

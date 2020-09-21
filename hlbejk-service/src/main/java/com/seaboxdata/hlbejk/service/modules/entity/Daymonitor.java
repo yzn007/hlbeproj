@@ -89,5 +89,13 @@ public class Daymonitor implements Serializable {
 		return daymonitor;
 	}
 
+	public static DaymonitorVO toData(Daymonitor daymonitor){
+		if (null == daymonitor) {
+			return null;
+		}
+		DaymonitorVO daymonitorVo = new DaymonitorVO();
+		BeanUtils.copyProperties(daymonitor,daymonitorVo);
+		return daymonitorVo;
+	}
 
 }

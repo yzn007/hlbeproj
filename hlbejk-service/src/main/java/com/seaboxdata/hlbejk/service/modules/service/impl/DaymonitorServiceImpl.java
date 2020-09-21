@@ -28,13 +28,19 @@ public class DaymonitorServiceImpl extends ServiceImpl<DaymonitorDao, Daymonitor
         if(null!=params && null!=params.get("key")&&!StringUtils.isEmpty(params.get("key").toString())){
             queryWrapper.eq("id",params.get("key"));
         }
-
         IPage<Daymonitor> page = this.page(
                 new Query<Daymonitor>().getPage(params),
                 queryWrapper
         );
 
-
+        if(null!=params && null!=params.get("key")&&!StringUtils.isEmpty(params.get("key").toString())){
+            List<DaymonitorVO> listDayVo = list(params.get("key").toString());
+            List<Daymonitor> listDay = new ArrayList<>();
+            for(DaymonitorVO dv:listDayVo){
+                listDay.add(Daymonitor.toEntity(dv));
+            }
+            page.setRecords(listDay);
+        }
 
 
         return new PageUtils(page);

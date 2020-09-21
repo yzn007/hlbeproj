@@ -74,6 +74,13 @@ public class SystemlogsVO implements Serializable {
 	private String remote;
 
 	/**
+	 * 操作时间
+	 */
+	@ApiModelProperty(value = "操作时间")
+	private String operdate;
+
+
+	/**
 	 * 状态
 	 */
 	@ApiModelProperty(value = "状态")
