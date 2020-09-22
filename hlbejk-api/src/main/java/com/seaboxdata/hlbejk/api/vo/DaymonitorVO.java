@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class DaymonitorVO implements Serializable {
+	public class DaymonitorVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
@@ -44,7 +44,7 @@ public class DaymonitorVO implements Serializable {
 	@ApiModelProperty(value = "用户监控主键",name="monitorid",required = true)
 	private String monitorid;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ApiModelProperty(value = "行政区划代码",name="districtcode")
 	private String districtcode;
 
