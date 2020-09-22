@@ -1,5 +1,6 @@
 package com.seaboxdata.hlbejk.api.controller;
 
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.FeignClientConfig;
 import com.seaboxdata.hlbejk.api.vo.NoticeVO;
@@ -38,6 +39,15 @@ public interface INoticeController {
     NoticeVO info(@PathVariable("id") String id);
 
     /**
+     * 查询通知公告信息
+     * @param params
+     * @return
+     */
+    @ApiOperation(value = "查询通知公告信息")
+    @GetMapping("/hlbejk/notice/listMessage")
+    List<NoticeVO> getNoticeList(@RequestParam Map<String, Object> params);
+
+    /**
      * 保存
      */
     @ApiOperation(value = "保存")
@@ -57,5 +67,7 @@ public interface INoticeController {
     @ApiOperation(value = "删除")
     @DeleteMapping("/hlbejk/notice/delete")
     Boolean delete(@RequestBody String[] ids);
+
+
 
 }
