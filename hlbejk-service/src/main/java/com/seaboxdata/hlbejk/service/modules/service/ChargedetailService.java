@@ -2,9 +2,12 @@ package com.seaboxdata.hlbejk.service.modules.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
+
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.vo.ChargedetailVO;
 import com.seaboxdata.hlbejk.service.modules.entity.Chargedetail;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 费用详细
@@ -22,5 +25,7 @@ public interface ChargedetailService extends IService<Chargedetail> {
     Boolean insert(Chargedetail chargedetail);
 
     Boolean update(Chargedetail chargedetail);
+
+    List<ChargedetailVO> queryTotal(String date,String userId);
 }
 

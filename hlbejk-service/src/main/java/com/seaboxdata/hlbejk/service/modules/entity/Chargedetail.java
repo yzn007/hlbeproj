@@ -10,6 +10,8 @@ import lombok.experimental.Accessors;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.ToString;
+import org.springframework.data.annotation.Transient;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -57,6 +59,11 @@ public class Chargedetail implements Serializable {
 	 */
 	@TableId(value = "id", type = IdType.INPUT)
 	private String id;
-	
+
+	/**
+	 * 调用次数
+	 */
+	@Transient
+	private int callnum;
 
 }

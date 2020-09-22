@@ -1,5 +1,6 @@
 package com.seaboxdata.hlbejk.api.controller;
 
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.FeignClientConfig;
 import com.seaboxdata.hlbejk.api.vo.ChargedetailVO;
@@ -57,5 +58,12 @@ public interface IChargedetailController {
     @ApiOperation(value = "删除")
     @DeleteMapping("/hlbejk/chargedetail/delete")
     Boolean delete(@RequestBody String[] ids);
+
+    /**
+     * 根据用户跟日期取得费用次数
+     */
+    @ApiOperation(value = "列表")
+    @GetMapping("/hlbejk/chargedetail/queryTotal")
+    List queryTotal(@RequestParam String date,@RequestParam String userId);
 
 }

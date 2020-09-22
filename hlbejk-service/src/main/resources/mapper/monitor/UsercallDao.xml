@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.UsercallDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.api.vo.UsercallVO" id="usercallMap">
+        <result property="callnum" column="callNum"/>
+        <result property="chargetype" column="chargeType"/>
+        <result property="callperiod" column="callPeriod" />
+        <result property="cost" column="cost"/>
+        <result property="userid" column="userId"/>
+    </resultMap>
+
+    <!-- 个人调用统计 -->
+    <select id="queryTotal" resultMap="usercallMap">
+        select callNum callNum,uc.chargeType,callPeriod,cost,userId from usercall uc left JOIN chargetype ct on uc.chargeType = ct.chargeType
+          group by uc.chargeType,callPeriod,userId
+    </select>
+
+
+
+</mapper>

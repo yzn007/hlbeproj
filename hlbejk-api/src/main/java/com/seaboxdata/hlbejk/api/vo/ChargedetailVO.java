@@ -61,6 +61,10 @@ public class ChargedetailVO implements Serializable {
 	 */
 	@ApiModelProperty(value = "主键")
 		private String id;
-	
 
+	/**
+	 * 次数
+	 */
+	@ApiModelProperty(value = "次数")
+	private int callnum;
 }

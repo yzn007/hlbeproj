@@ -1,6 +1,7 @@
 package com.seaboxdata.hlbejk.service.modules.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IChargedetailController;
 import com.seaboxdata.hlbejk.api.vo.ChargedetailVO;
@@ -27,6 +28,17 @@ public class ChargedetailController implements IChargedetailController{
 
     @Autowired
     private ChargedetailService chargedetailService;
+
+    /**
+     * 根据日期和用户返回费用次数
+     * @param date
+     * @param userId
+     * @return
+     */
+    @Override
+    public List queryTotal(String date, String userId) {
+        return chargedetailService.queryTotal(date,userId);
+    }
 
     /**
      * 列表

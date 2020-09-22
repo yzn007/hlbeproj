@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.ChargedetailDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.api.vo.ChargedetailVO" id="chargeDetailMap">
+        <result property="chargetype" column="chargeType"/>
+        <result property="calldate" column="callDate"/>
+        <result property="cost" column="cost"/>
+        <result property="userid" column="userId"/>
+    </resultMap>
+
+    <!-- 按日期取得调用次数 -->
+    <select id="queryTotal" resultMap="chargeDetailMap">
+        select *,sum(callnum) over() as total from (
+        select count(cost) callNum ,DATE_FORMAT(callDate,'%Y-%m-%d') callDate,userId from chargedetail group by
+        userId,DATE_FORMAT(callDate,'%Y-%m-%d')) a
+        where 1 = 1
+        <if test="param.userid!=null and param.userid!=''">
+            and userid = #{param.userid}
+        </if>
+        <if test="param.date!=null and param.date!=''">
+            and DATE_FORMAT(callDate,'%Y-%m-%d') = #{param.date}
+        </if>
+    </select>
+
+
+</mapper>
