@@ -17,9 +17,13 @@ public class DataapplyinfoServiceImpl extends ServiceImpl<DataapplyinfoDao, Data
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        QueryWrapper queryWrapper = new QueryWrapper<>();
+        if(null != params.get("key") && !"".equals(params.get("key"))){
+            queryWrapper.eq("id", params.get("key"));
+       }
         IPage<Dataapplyinfo> page = this.page(
                 new Query<Dataapplyinfo>().getPage(params),
-                new QueryWrapper<>()
+                queryWrapper
         );
 
         return new PageUtils(page);
