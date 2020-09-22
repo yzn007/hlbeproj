@@ -21,7 +21,10 @@
         select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
         date_format(dy.date,'%Y-%m-%d') date,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
          from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
-        where date_format(dy.date,'%Y-%m-%d') = #{param.day}
+         where 1=1
+        <if test="param.day!=''">
+            and  date_format(dy.date,'%Y-%m-%d') = #{param.day}
+        </if>
     </select>
 
     <!-- 根据地区排名返回合计 -->
@@ -42,6 +45,7 @@
             from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
             where position( #{param.yearMonth} in date_format(dy.date,'%Y-%m'))>0
             group by date_format(dy.date,'%Y-%m')
+            order by date_format(dy.date,'%Y-%m')
         ]]>
     </select>
 
