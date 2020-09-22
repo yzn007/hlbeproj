@@ -6,6 +6,7 @@ import com.seaboxdata.hlbejk.service.modules.entity.Programinfo;
 import com.seaboxdata.hlbejk.service.modules.service.PrograminfoService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -22,9 +23,13 @@ public class PrograminfoServiceImpl extends ServiceImpl<PrograminfoDao, Programi
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if(null!=params && null!=params.get("key")&&!StringUtils.isEmpty(params.get("key").toString())){
+            queryWrapper.like("programname",params.get("key"));
+        }
         IPage<Programinfo> page = this.page(
                 new Query<Programinfo>().getPage(params),
-                new QueryWrapper<>()
+                queryWrapper
         );
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

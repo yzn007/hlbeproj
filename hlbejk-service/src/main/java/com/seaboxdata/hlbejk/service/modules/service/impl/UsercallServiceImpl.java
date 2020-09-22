@@ -6,6 +6,7 @@ import com.seaboxdata.hlbejk.service.modules.entity.Usercall;
 import com.seaboxdata.hlbejk.service.modules.service.UsercallService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -18,9 +19,13 @@ public class UsercallServiceImpl extends ServiceImpl<UsercallDao, Usercall> impl
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        if(null!=params && null!=params.get("key")&&!StringUtils.isEmpty(params.get("key").toString())){
+            queryWrapper.like("userid",params.get("key"));
+        }
         IPage<Usercall> page = this.page(
                 new Query<Usercall>().getPage(params),
-                new QueryWrapper<>()
+                queryWrapper
         );
 
         return new PageUtils(page);
