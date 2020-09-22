@@ -1,11 +1,14 @@
 package com.seaboxdata.hlbejk.service.modules.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.seaboxdata.hlbejk.api.vo.TodosVO;
 import com.seaboxdata.hlbejk.service.modules.dao.TodosDao;
 import com.seaboxdata.hlbejk.service.modules.service.TodosService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -43,5 +46,11 @@ public class TodosServiceImpl extends ServiceImpl<TodosDao, Todos> implements To
         this.updateById(todos);
         return true;
     }
+
+    @Override
+    public List<TodosVO> getTodosList(Map<String, Object> params) {
+        return super.baseMapper.getTodosList(params);
+    }
+
 
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.NoticeDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.api.vo.NoticeVO" id="noticeVOMap">
+
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="userid" column="userId"/>
+        <result property="deptid" column="deptId"/>
+        <result property="remark" column="remark"/>
+        <result property="updatetime" column="updateTime"/>
+        <result property="isread" column="isRead"/>
+
+    </resultMap>
+
+    <sql id="selectNoticeVo">
+        select id, title, content, userId, deptId, remark, updateTime, isRead
+		from notice
+    </sql>
+
+    <select id="getNoticeList" resultMap="noticeVOMap">
+        <include refid="selectNoticeVo"/>
+        <where>
+            <if test="param.id != null and param.id != ''">
+                AND id = #{param.id}
+            </if>
+            <if test="param.title != null and param.title != ''">
+                AND title like concat('%', #{param.title}, '%')
+            </if>
+            <if test="param.content != null and param.content != ''">
+                AND content like concat('%', #{param.content}, '%')
+            </if>
+            <if test="param.deptid != null and param.deptid != ''">
+                AND deptId = #{param.deptid}
+            </if>
+            <if test="param.userid != null and param.userid != ''">
+                AND userId = #{param.userid}
+            </if>
+        </where>
+        <if test="param.isread != ''">
+            order by  isRead asc,updateTime desc
+        </if>
+    </select>
+
+
+</mapper>

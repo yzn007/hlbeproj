@@ -2,8 +2,12 @@ package com.seaboxdata.hlbejk.service.modules.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
+
+import java.util.List;
 import java.util.Map;
+
 import com.seaboxdata.hlbejk.api.vo.NoticeVO;
+import com.seaboxdata.hlbejk.service.modules.dao.NoticeDao;
 import com.seaboxdata.hlbejk.service.modules.entity.Notice;
 
 /**
@@ -22,5 +26,7 @@ public interface NoticeService extends IService<Notice> {
     Boolean insert(Notice notice);
 
     Boolean update(Notice notice);
+
+    List<NoticeVO> getNoticeList(Map<String, Object> params);
 }
 

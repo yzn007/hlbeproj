@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.TodosDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.api.vo.TodosVO" id="todosVOMap">
+
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="userid" column="userId"/>
+        <result property="state" column="state"/>
+        <result property="updatetime" column="updateTime"/>
+
+    </resultMap>
+
+    <sql id="selectNoticeVo">
+        select id, title, content, userId, state, updateTime
+		from todos
+    </sql>
+
+    <select id="getTodosList" resultMap="todosVOMap">
+        <include refid="selectNoticeVo"/>
+        <where>
+            <if test="param.id != null and param.id != ''">
+                AND id = #{param.id}
+            </if>
+            <if test="param.title != null and param.title != ''">
+                AND title like concat('%', #{param.title}, '%')
+            </if>
+            <if test="param.content != null and param.content != ''">
+                AND content like concat('%', #{param.content}, '%')
+            </if>
+            <if test="param.userid != null and param.userid != ''">
+                AND userId = #{param.userid}
+            </if>
+            <if test="param.state != null and param.state !=''">
+                AND state = #{param.state}
+            </if>
+        </where>
+            order by state asc
+    </select>
+
+
+</mapper>

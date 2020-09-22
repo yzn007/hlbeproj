@@ -2,7 +2,11 @@ package com.seaboxdata.hlbejk.service.modules.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
+
+import java.util.List;
 import java.util.Map;
+
+import com.seaboxdata.hlbejk.api.vo.NoticeVO;
 import com.seaboxdata.hlbejk.api.vo.TodosVO;
 import com.seaboxdata.hlbejk.service.modules.entity.Todos;
 
@@ -22,5 +26,7 @@ public interface TodosService extends IService<Todos> {
     Boolean insert(Todos todos);
 
     Boolean update(Todos todos);
+
+    List<TodosVO> getTodosList(Map<String, Object> params);
 }
 

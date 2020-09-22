@@ -1,7 +1,10 @@
 package com.seaboxdata.hlbejk.service.modules.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.seaboxdata.hlbejk.api.controller.INoticeController;
 import com.seaboxdata.hlbejk.api.vo.NoticeVO;
 import com.seaboxdata.hlbejk.service.modules.entity.Notice;
@@ -28,6 +31,7 @@ public class NoticeController implements INoticeController{
     @Autowired
     private NoticeService noticeService;
 
+
     /**
      * 列表
      */
@@ -47,6 +51,12 @@ public class NoticeController implements INoticeController{
         NoticeVO noticeVO = new NoticeVO();
         BeanUtils.copyProperties(notice, noticeVO);
         return noticeVO;
+    }
+
+    @Override
+    public List<NoticeVO> getNoticeList(@RequestParam Map<String, Object> params) {
+        List<NoticeVO> list = noticeService.getNoticeList(params);
+        return  list;
     }
 
     /**
