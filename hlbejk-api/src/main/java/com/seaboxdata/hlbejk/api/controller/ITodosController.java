@@ -1,7 +1,9 @@
 package com.seaboxdata.hlbejk.api.controller;
 
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.FeignClientConfig;
+import com.seaboxdata.hlbejk.api.vo.NoticeVO;
 import com.seaboxdata.hlbejk.api.vo.TodosVO;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
@@ -29,6 +31,15 @@ public interface ITodosController {
     @GetMapping("/hlbejk/todos/list")
     PageUtils list(@RequestParam Map<String, Object> params);
 
+
+    /**
+     * 查询通知公告信息
+     * @param params
+     * @return
+     */
+    @ApiOperation(value = "查询待办事项信息")
+    @GetMapping("/hlbejk/todos/getTodosList")
+    List<TodosVO> getTodosList(@RequestParam Map<String, Object> params);
 
     /**
      * 详细信息
