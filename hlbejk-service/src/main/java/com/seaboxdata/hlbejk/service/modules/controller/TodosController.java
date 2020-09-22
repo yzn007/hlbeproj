@@ -1,6 +1,7 @@
 package com.seaboxdata.hlbejk.service.modules.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.ITodosController;
 import com.seaboxdata.hlbejk.api.vo.TodosVO;
@@ -35,6 +36,14 @@ public class TodosController implements ITodosController{
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = todosService.queryPage(params);
         return page;
+    }
+
+    @Override
+    public List<TodosVO> getTodosList(@RequestParam Map<String, Object> params) {
+
+        List<TodosVO> list = todosService.getTodosList(params);
+
+        return list;
     }
 
 
