@@ -45,7 +45,8 @@ public class PrograminfoController implements IPrograminfoController{
     public PrograminfoVO info(@PathVariable("id") String id){
         Programinfo programinfo = programinfoService.queryById(id);
         PrograminfoVO programinfoVO = new PrograminfoVO();
-        BeanUtils.copyProperties(programinfo, programinfoVO);
+       if(programinfo!=null)
+           BeanUtils.copyProperties(programinfo, programinfoVO);
         return programinfoVO;
     }
 
