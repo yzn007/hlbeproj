@@ -13,7 +13,7 @@
 
     <!-- 按日期取得调用次数 -->
     <select id="queryTotal" resultMap="chargeDetailMap">
-        select *,sum(callnum) over() as total from (
+        select *,sum(callnum) as total from (
         select count(cost) callNum ,DATE_FORMAT(callDate,'%Y-%m-%d') callDate,userId from chargedetail group by
         userId,DATE_FORMAT(callDate,'%Y-%m-%d')) a
         where 1 = 1
@@ -23,6 +23,7 @@
         <if test="param.date!=null and param.date!=''">
             and DATE_FORMAT(callDate,'%Y-%m-%d') = #{param.date}
         </if>
+        -- group by userId,DATE_FORMAT(callDate,'%Y-%m-%d')
     </select>
 
 
