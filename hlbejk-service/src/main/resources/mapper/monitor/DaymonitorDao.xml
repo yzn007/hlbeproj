@@ -17,6 +17,11 @@
         <result property="yearmonth" column="yearmonth"/>
     </resultMap>
 
+    <select id="queryByMonitorId" resultMap="daymonitorMap">
+        select * from Daymonitor
+        where monitorId = #{param.monitorId}
+    </select>
+
     <select id="list" resultMap="daymonitorMap">
         select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
         date_format(dy.date,'%Y-%m-%d') date,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
