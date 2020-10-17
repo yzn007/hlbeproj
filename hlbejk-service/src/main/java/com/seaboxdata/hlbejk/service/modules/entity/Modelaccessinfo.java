@@ -2,13 +2,19 @@ package com.seaboxdata.hlbejk.service.modules.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.ToString;
+import org.springframework.data.annotation.Transient;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -24,38 +30,48 @@ import java.util.Date;
 @Accessors(chain = true)
 @TableName("modelaccessinfo")
 public class Modelaccessinfo implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 主键
-	 */
-	@TableId(value = "id", type = IdType.INPUT)
-	private String id;
-	
-	/**
-	 * 模型名称
-	 */
-	private String modelname;
+    /**
+     * 主键
+     */
+    @TableId(value = "id", type = IdType.INPUT)
+    private String id;
 
-	/**
-	 * 模型地址
-	 */
-	private String modeladdr;
+    /**
+     * 模型名称
+     */
+    private String modelname;
 
-	/**
-	 * 调用次数
-	 */
-	private String applynum;
+    /**
+     * 模型地址
+     */
+    private String modeladdr;
 
-	/**
-	 * 调用时间
-	 */
-	private Date applydate;
+    /**
+     * 使用流量
+     */
+    private BigDecimal usedatas;
 
-	/**
-	 * 用户监控Id
-	 */
-	private String monitorid;
+    /**
+     * 调用次数
+     */
+    private String applynum;
+
+    /**
+     * 调用时间
+     */
+    private Date applydate;
+
+    /**
+     * 用户监控Id
+     */
+    private String monitorid;
+    /**
+     * y用户id
+     */
+    @Transient
+    private transient String userId;
 
 
 }

@@ -32,5 +32,7 @@ public interface DaymonitorService extends IService<Daymonitor> {
     List<DaymonitorVO> listByDate(String dayMonth);
 
     List<DaymonitorVO> listDistictData(String isOrder);
+
+    DaymonitorVO queryByMonitorId(String monitorId);
 }
 

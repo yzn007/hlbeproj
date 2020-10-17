@@ -2,6 +2,11 @@ package com.seaboxdata.hlbejk.api.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,6 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ModelapplyinfoVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +53,7 @@ public class ModelapplyinfoVO implements Serializable {
 	 * 申请时间
 	 */
 	@ApiModelProperty(value = "申请时间")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date applydate;
 
 	/**
@@ -72,6 +79,11 @@ public class ModelapplyinfoVO implements Serializable {
 	 */
 	@ApiModelProperty(value = "用户监控Id")
 	private String monitorid;
+	/**
+	 * 用户id
+	 */
+	@ApiModelProperty(value="用户id")
+	private String userId;
 
 
 }

@@ -10,6 +10,7 @@ import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
 import jdk.nashorn.internal.objects.annotations.Where;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.util.collections.CaseInsensitiveKeyMap;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -107,5 +108,10 @@ public class DaymonitorServiceImpl extends ServiceImpl<DaymonitorDao, Daymonitor
         return listVo;
     }
 
-
+    @Override
+    public DaymonitorVO queryByMonitorId(String monitorId) {
+        Map<String, Object> params = new CaseInsensitiveKeyMap<>();
+        params.put("monitorId",monitorId);
+        return super.baseMapper.queryByMonitorId(params);
+    }
 }

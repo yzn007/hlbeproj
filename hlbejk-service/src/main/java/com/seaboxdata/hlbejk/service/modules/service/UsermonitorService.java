@@ -2,6 +2,8 @@ package com.seaboxdata.hlbejk.service.modules.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
+
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.vo.UsermonitorVO;
 import com.seaboxdata.hlbejk.service.modules.entity.Usermonitor;
@@ -22,5 +24,7 @@ public interface UsermonitorService extends IService<Usermonitor> {
     Boolean insert(Usermonitor usermonitor);
 
     Boolean update(Usermonitor usermonitor);
+
+    List<Usermonitor> queryByDateAndUser (Map<String, Object> params);
 }
 

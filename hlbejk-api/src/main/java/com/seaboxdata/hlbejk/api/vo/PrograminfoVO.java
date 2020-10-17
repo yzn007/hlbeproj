@@ -72,7 +72,7 @@ public class PrograminfoVO implements Serializable {
 	/**
 	 * 更新时间
 	 */
-	@JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@ApiModelProperty(value = "更新时间")
 	private Date updatetime;
 

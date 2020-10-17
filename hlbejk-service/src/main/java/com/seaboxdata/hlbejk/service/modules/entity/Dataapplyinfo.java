@@ -9,6 +9,8 @@ import lombok.experimental.Accessors;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.ToString;
+import org.springframework.data.annotation.Transient;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -72,5 +74,10 @@ public class Dataapplyinfo implements Serializable {
 	 */
 	private String monitorid;
 
+	/**
+	 * 用户id
+	 */
+	@Transient
+	private transient String userId;
 
 }

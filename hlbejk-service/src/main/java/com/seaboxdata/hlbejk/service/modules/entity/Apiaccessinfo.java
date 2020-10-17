@@ -9,6 +9,8 @@ import lombok.experimental.Accessors;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.ToString;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -31,6 +33,11 @@ public class Apiaccessinfo implements Serializable {
 	 */
 	@TableId(value = "id", type = IdType.INPUT)
 	private String id;
+
+	/**
+	 * 使用流量
+	 */
+	private BigDecimal usedatas;
 	
 	/**
 	 * 接口名

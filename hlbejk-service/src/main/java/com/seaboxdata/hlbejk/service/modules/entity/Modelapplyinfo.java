@@ -3,12 +3,16 @@ package com.seaboxdata.hlbejk.service.modules.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.annotation.*;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.ToString;
+import org.springframework.data.annotation.Transient;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -67,5 +71,10 @@ public class Modelapplyinfo implements Serializable {
 	 */
 	private String monitorid;
 
+	/**
+	 * 用户id
+	 */
+	@Transient
+	private transient String userId;
 
 }
