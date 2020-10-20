@@ -30,6 +30,7 @@
         <if test="param.day!=''">
             and  date_format(dy.date,'%Y-%m-%d') = #{param.day}
         </if>
+        group by date,districtCode
     </select>
 
     <!-- 根据地区排名返回合计 -->
