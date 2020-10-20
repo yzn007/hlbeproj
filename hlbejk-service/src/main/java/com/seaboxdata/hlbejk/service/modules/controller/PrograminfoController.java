@@ -1,6 +1,8 @@
 package com.seaboxdata.hlbejk.service.modules.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IPrograminfoController;
 import com.seaboxdata.hlbejk.api.vo.PrograminfoVO;
@@ -24,6 +26,25 @@ import org.springframework.beans.BeanUtils;
  */
 @RestController
 public class PrograminfoController implements IPrograminfoController{
+
+    @Override
+    public List<PrograminfoVO> selectList() {
+        List<PrograminfoVO> list = new ArrayList<>();
+        for(int i=0;i<6;i++){
+            PrograminfoVO programinfo =new PrograminfoVO();
+            programinfo.setId(Integer.toString(i+1));
+            programinfo.setProgramname("算法"+(i+1));
+            programinfo.setProgramaddr("地址"+(i+1));
+            programinfo.setProgramapi("算法接口"+(i+1));
+            programinfo.setProgramdesc("描述"+(i+1));
+            programinfo.setProgramparams("参数"+(i+1));
+            programinfo.setProgramtype(Integer.toString(i+1));
+            programinfo.setProgramid(Integer.toString(i+1));
+            programinfo.setState("1");
+            list.add(programinfo);
+        }
+        return list;
+    }
 
     @Autowired
     private PrograminfoService programinfoService;

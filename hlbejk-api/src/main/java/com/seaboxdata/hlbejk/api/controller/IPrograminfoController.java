@@ -1,5 +1,6 @@
 package com.seaboxdata.hlbejk.api.controller;
 
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.FeignClientConfig;
 import com.seaboxdata.hlbejk.api.vo.PrograminfoVO;
@@ -28,6 +29,10 @@ public interface IPrograminfoController {
     @ApiOperation(value = "列表")
     @GetMapping("/hlbejk/programinfo/list")
     PageUtils list(@RequestParam Map<String, Object> params);
+
+    @ApiOperation(value = "算法下拉列表")
+    @GetMapping("/hlbejk/programinfo/selectList")
+    List<PrograminfoVO> selectList();
 
 
     /**
