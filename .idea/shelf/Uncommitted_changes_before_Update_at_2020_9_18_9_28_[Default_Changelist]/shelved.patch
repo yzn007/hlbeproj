@@ -1,0 +1,31 @@
+Index: hlbejk-service/src/main/resources/application-dev.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring:\r\n  redis:\r\n#    database: 0\r\n    host: cloud.dfjx.com\r\n    port: 6379\r\n    password: dfjx123\r\n    jedis:\r\n      pool:\r\n        max-active: 100\r\n        max-wait: 2000\r\n        max-idle: 500\r\n        min-idle: 8\r\n    timeout: 5000\r\n  datasource:\r\n    driverClassName: com.mysql.cj.jdbc.Driver\r\n    url: jdbc:mysql://10.217.17.117:3316/yunyingjianguan?serverTimezone=GMT%2B8&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8\r\n    username: yyjg\r\n    password: yyjgpassword\r\n    hikari:\r\n      connection-timeout: 20000\r\n      minimum-idle: 1\r\n      maximum-pool-size: 5\r\n      idle-timeout: 10000\r\n      auto-commit: true\r\n\r\nribbon:\r\n  eureka:\r\n    enabled: true\r\n  ReadTimeout: 30000\r\n  ConnectTimeout: 30000\r\n\r\nauth:\r\n  need: false #是否对接auth，false为暂时不对接，true为开启对接\r\n  versions: auth1 #对接权限管理版本auth1、auth2，\r\n  systemCode: template #本系统在auth的auth_system或者oauth_system中配置的system_code或者app_name\r\n\r\n#template服务地址，本服务可以不用配置\r\ntemplate-service-url: http://cloud.dfjx.com:30075\r\n\r\n#用户中心服务地址\r\nauth-service-url: http://cloud.dfjx.com:30002\r\n\r\n#认证中心服务地址\r\nauth-server-url: http://cloud.dfjx.com:30002\r\nsecurity:\r\n  oauth2:\r\n    client:\r\n      client-id: testclientid\r\n      client-secret: 123456\r\n      scope: read_userinfo\r\n      access-token-uri: ${auth-server-url}/oauth/token\r\n      user-authorization-uri: ${auth-server-url}/oauth/authorize\r\n    resource:\r\n      token-info-uri: ${auth-server-url}/oauth/check_token\r\n      check-token: ${auth-server-url}/oauth/check_token\r\n\r\n#token存储方式和时间，为false是关闭浏览cookie就消失，true存储cookie，access-cookie-time为有效时间\r\ncookie:\r\n  enable: true\r\n  access-cookie-time: 600000\r\n\r\nweb:\r\n  home: http://my.dfjx.com:3071\r\n\r\n#domain，cookie存储的主域名，有效时间\r\ntoken:\r\n  domain: dfjx.com\r\n  access-token:\r\n    expiration-time: 600000\r\n  refresh-token:\r\n    expiration-time: 2592000 # 60 * 60 * 12 * 2 * 30\r\n\r\n#日志级别\r\nlogging:\r\n  level:\r\n    \"org.springframework\": info\r\n    com.seaboxdata.template.service.modules.dao: debug
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hlbejk-service/src/main/resources/application-dev.yml	(revision e3c2e8b97fa4409dc867c6c9777d0ab65e0c1176)
++++ hlbejk-service/src/main/resources/application-dev.yml	(date 1600312757713)
+@@ -13,9 +13,9 @@
+     timeout: 5000
+   datasource:
+     driverClassName: com.mysql.cj.jdbc.Driver
+-    url: jdbc:mysql://10.217.17.117:3316/yunyingjianguan?serverTimezone=GMT%2B8&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+-    username: yyjg
+-    password: yyjgpassword
++    url: jdbc:mysql://127.0.0.1:3306/yunyingjianguan?serverTimezone=GMT%2B8&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
++    username: root
++    password: rsj19941219
+     hikari:
+       connection-timeout: 20000
+       minimum-idle: 1
+@@ -30,7 +30,7 @@
+   ConnectTimeout: 30000
+ 
+ auth:
+-  need: false #是否对接auth，false为暂时不对接，true为开启对接
++  need: true #是否对接auth，false为暂时不对接，true为开启对接
+   versions: auth1 #对接权限管理版本auth1、auth2，
+   systemCode: template #本系统在auth的auth_system或者oauth_system中配置的system_code或者app_name
+ 
