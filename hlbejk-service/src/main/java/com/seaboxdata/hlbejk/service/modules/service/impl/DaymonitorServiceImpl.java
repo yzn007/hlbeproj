@@ -10,9 +10,11 @@ import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
 import jdk.nashorn.internal.objects.annotations.Where;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.util.Strings;
 import org.apache.tomcat.util.collections.CaseInsensitiveKeyMap;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -89,6 +91,30 @@ public class DaymonitorServiceImpl extends ServiceImpl<DaymonitorDao, Daymonitor
 //            listDays.add(Daymonitor.toEntity(vo));
 //        }
 //        page.setRecords(listDays);
+        DaymonitorVO daymonitorVO = new DaymonitorVO();
+        daymonitorVO.setAccmodeldata(new BigDecimal(0));
+        daymonitorVO.setAccapidata(new BigDecimal(0));
+        daymonitorVO.setAccdatatraffic(new BigDecimal(0));
+
+        for(DaymonitorVO dy :listVo){
+            if(null!=dy.getAccmodeldata())
+                daymonitorVO.setAccmodeldata(daymonitorVO.getAccmodeldata().add(dy.getAccmodeldata()));
+            if(dy.getAccapidata()!=null)
+                daymonitorVO.setAccapidata(daymonitorVO.getAccapidata().add(dy.getAccapidata()));
+            if(dy.getAccdatatraffic()!=null)
+                daymonitorVO.setAccdatatraffic(daymonitorVO.getAccdatatraffic().add(dy.getAccdatatraffic()));
+            if(Strings.isEmpty(daymonitorVO.getDistrictcode()))
+                daymonitorVO.setDistrictcode(dy.getDistrictcode());
+//            if(daymonitorVO.getApplynum()==0)
+                daymonitorVO.setApplynum(daymonitorVO.getApplynum()+dy.getApplynum());
+//            if(daymonitorVO.getAccnum()==0)
+                daymonitorVO.setAccnum(daymonitorVO.getAccnum()+dy.getAccnum());
+            if(null==daymonitorVO.getDate())
+                daymonitorVO.setDate(dy.getDate());
+        }
+
+        listVo.clear();
+        listVo.add(daymonitorVO);
         return listVo;
     }
 
