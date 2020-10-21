@@ -86,7 +86,6 @@ public class DaymonitorController implements IDaymonitorController{
 
     @Override
     public List<DaymonitorVO> listQ(String day) {
-
         return daymonitorService.list(day);
     }
 

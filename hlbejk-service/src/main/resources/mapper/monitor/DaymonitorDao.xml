@@ -36,12 +36,17 @@
     <!-- 根据地区排名返回合计 -->
     <select id="listDistictData" resultMap="daymonitorMap">
         select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
+        null yearmonth,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
+        from(
+        select sum(accApiData) accApiData,sum(accModelData) accModelData,sum(accDataTraffic) accDataTraffic,
         date_format(dy.date,'%Y-%m') yearmonth,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
         from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
-        group by ur.districtcode
+        group by ur.districtcode,yearmonth
         <if test="param.isOrder!=''">
             order by sum(accDataTraffic) desc
         </if>
+        ) a group  by districtCode
+        order by accDataTraffic desc
     </select>
     <!-- 根据年月返回合计 -->
     <select id="listByDate" resultMap="daymonitorMap">
@@ -50,7 +55,7 @@
             date_format(dy.date,'%Y-%m') yearmonth,sum(accNum) accNum,sum(applyNum) applyNum,districtCode
             from daymonitor dy left JOIN usermonitor ur on dy.monitorId = ur.Id
             where position( #{param.yearMonth} in date_format(dy.date,'%Y-%m'))>0
-            group by date_format(dy.date,'%Y-%m')
+            group by date_format(dy.date,'%Y-%m'),districtCode
             order by date_format(dy.date,'%Y-%m')
         ]]>
     </select>

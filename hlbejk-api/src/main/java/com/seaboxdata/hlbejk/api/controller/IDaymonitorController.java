@@ -65,7 +65,7 @@ public interface IDaymonitorController {
      * 返回指定日期的列表
      */
     @ApiOperation(value = "指定日期查询")
-    @GetMapping("/hlbejk/daymonitor/list1")
+    @GetMapping("/hlbejk/daymonitor/listq")
     List<DaymonitorVO> listQ(@RequestParam String day);
 
     /**
