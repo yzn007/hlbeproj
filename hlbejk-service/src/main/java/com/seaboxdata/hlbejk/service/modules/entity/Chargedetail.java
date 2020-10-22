@@ -64,6 +64,6 @@ public class Chargedetail implements Serializable {
 	 * 调用次数
 	 */
 	@Transient
-	private int callnum;
+	private transient int  callnum;
 
 }
