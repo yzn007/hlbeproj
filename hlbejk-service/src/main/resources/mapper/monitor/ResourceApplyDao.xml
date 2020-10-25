@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.ResourcesApplyDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.api.vo.ResourcesApplyVO" id="resourceMap">
+        <result property="modifyTm" column="modify_tm"/>
+        <result property="reviewStatus" column="review_status"/>
+        <result property="createOrgan" column="create_organ"/>
+        <result property="resourceOrgan" column="resource_organ"/>
+        <result property="taskType" column="task_type"/>
+    </resultMap>
+
+    <!-- 按名称返回取得资源 -->
+    <select id="queryResource" resultMap="resourceMap">
+        SELECT DISTINCT
+	ra.create_organ,
+	ra.creator,
+	ra.task_type,
+	ra.resource_organ,
+	ra.review_status,
+	ra.modifier,
+	ra.modify_tm
+FROM
+	resources_apply ra
+INNER JOIN resources_apply_item ri ON ri.apply_id = ra.id
+LEFT JOIN resources_apply_dept_group rad ON ra.dept_group_id = rad.id
+LEFT JOIN resources_apply_group rag ON ra.group_id = rag.id
+INNER JOIN resources_apply_sum ras ON ra.apply_sum_id = ras.id
+<if test="param.name!=null">
+    where instr(  ra.create_organ,#{param.name})>0
+</if>
+    </select>
+
+
+</mapper>
