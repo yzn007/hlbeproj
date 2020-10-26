@@ -63,4 +63,20 @@ public interface IPrograminfoController {
     @DeleteMapping("/hlbejk/programinfo/delete")
     Boolean delete(@RequestBody String[] ids);
 
+    /**
+     * 算法名称接口
+     * @return
+     */
+    @ApiOperation(value = "算法名称列表")
+    @PostMapping("/hlbejk/programinfo/programnamelist")
+    List<PrograminfoVO> programNmList();
+
+    /**
+     * 算法接口信息
+     * @return
+     */
+    @ApiOperation(value = "算法信息")
+    @PostMapping("/hlbejk/programinfo/programdetail")
+    PrograminfoVO programDetail(@RequestParam Map<String, Object> param);
+
 }
