@@ -1,6 +1,7 @@
 package com.seaboxdata.hlbejk.service.modules.service.impl;
 
 import cn.hutool.core.map.CaseInsensitiveMap;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.seaboxdata.hlbejk.api.vo.ResourcesApplyVO;
 import com.seaboxdata.hlbejk.service.modules.dao.ResourcesApplyDao;
@@ -19,6 +20,7 @@ import com.seaboxdata.hlbejk.service.modules.entity.ResourcesApply;
 
 
 @Service("resourcesApplyService")
+@DS("corc")
 public class ResourcesApplyServiceImpl extends ServiceImpl<ResourcesApplyDao, ResourcesApply> implements ResourcesApplyService {
 
     @Override
