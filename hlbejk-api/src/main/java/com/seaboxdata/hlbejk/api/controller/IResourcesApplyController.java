@@ -1,7 +1,10 @@
 package com.seaboxdata.hlbejk.api.controller;
 
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.FeignClientConfig;
+import com.seaboxdata.hlbejk.api.vo.OauthOrganizationVO;
+import com.seaboxdata.hlbejk.api.vo.OauthUserVO;
 import com.seaboxdata.hlbejk.api.vo.ResourcesApplyVO;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
@@ -28,6 +31,15 @@ public interface IResourcesApplyController {
     @ApiOperation(value = "列表")
     @GetMapping("/hlbejk/resourcesapply/list")
     PageUtils list(@RequestParam Map<String, Object> params);
+
+    @ApiOperation(value = "获取关联部门信息")
+    @GetMapping("/hlbejk/resourcesapply/getDeptList")
+    List<OauthOrganizationVO> getDeptList(@RequestParam Map<String, Object> params);
+
+
+    @ApiOperation(value = "获取关联用户信息")
+    @GetMapping("/hlbejk/resourcesapply/getUserList")
+    List<OauthUserVO> getUserList(@RequestParam Map<String, Object> params);
 
 
     /**

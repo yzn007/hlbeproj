@@ -12,19 +12,19 @@ spring:
         min-idle: 8
     timeout: 5000
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://10.217.17.117:3316/yunyingjianguan?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-#    username: yyjg
-#    password: yyjgpassword
-    url: jdbc:mysql://127.0.0.1:3306/yunyingjianguan?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: root
-    password: rsj19941219
-    hikari:
-      connection-timeout: 20000
-      minimum-idle: 1
-      maximum-pool-size: 5
-      idle-timeout: 10000
-      auto-commit: true
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/yunyingjianguan?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          username: root
+          password: rsj19941219
+          driverClassName: com.mysql.cj.jdbc.Driver
+        corc:
+          url: jdbc:mysql://127.0.0.1:3306/resourceapply?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          username: root
+          password: rsj19941219
+          driverClassName:  com.mysql.cj.jdbc.Driver
 
 ribbon:
   eureka:
@@ -65,7 +65,7 @@ cookie:
 web:
   home: http://my.dfjx.com:3071
 
-#domain，cookie存储的主域名，有效时间
+#domain，cookie存储的主域名，有效时间  10.60.78.33
 token:
   domain: dfjx.com
   access-token:

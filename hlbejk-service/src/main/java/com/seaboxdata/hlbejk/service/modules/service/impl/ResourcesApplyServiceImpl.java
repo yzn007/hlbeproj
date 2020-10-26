@@ -4,6 +4,7 @@ import cn.hutool.core.map.CaseInsensitiveMap;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.seaboxdata.hlbejk.api.vo.ResourcesApplyVO;
 import com.seaboxdata.hlbejk.service.modules.dao.ResourcesApplyDao;
+import com.seaboxdata.hlbejk.service.modules.entity.OauthOrganization;
 import com.seaboxdata.hlbejk.service.modules.service.ResourcesApplyService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
@@ -14,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springframework.beans.BeanUtils;
 import com.seaboxdata.hlbejk.service.modules.entity.ResourcesApply;
 
 
@@ -42,6 +42,8 @@ public class ResourcesApplyServiceImpl extends ServiceImpl<ResourcesApplyDao, Re
 
         return new PageUtils(page);
     }
+
+
 
     @Override
     public ResourcesApply queryById(Long id) {

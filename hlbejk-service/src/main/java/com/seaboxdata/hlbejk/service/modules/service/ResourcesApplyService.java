@@ -1,6 +1,7 @@
 package com.seaboxdata.hlbejk.service.modules.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.seaboxdata.hlbejk.service.modules.entity.OauthOrganization;
 import com.seaboxdata.hlbejk.service.modules.entity.ResourcesApply;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 

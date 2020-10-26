@@ -1,10 +1,18 @@
 package com.seaboxdata.hlbejk.service.modules.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IResourcesApplyController;
+import com.seaboxdata.hlbejk.api.vo.OauthOrganizationVO;
+import com.seaboxdata.hlbejk.api.vo.OauthUserVO;
 import com.seaboxdata.hlbejk.api.vo.ResourcesApplyVO;
+import com.seaboxdata.hlbejk.service.modules.entity.OauthOrganization;
+import com.seaboxdata.hlbejk.service.modules.entity.OauthUser;
 import com.seaboxdata.hlbejk.service.modules.entity.ResourcesApply;
+import com.seaboxdata.hlbejk.service.modules.service.OauthOrganizationService;
+import com.seaboxdata.hlbejk.service.modules.service.OauthUserService;
 import com.seaboxdata.hlbejk.service.modules.service.ResourcesApplyService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +36,11 @@ public class ResourcesApplyController implements IResourcesApplyController{
     @Autowired
     private ResourcesApplyService resourcesApplyService;
 
+    @Autowired
+    private OauthOrganizationService oauthOrganizationService;
+
+    @Autowired
+    private OauthUserService oauthUserService;
     /**
      * 列表
      */
@@ -35,6 +48,20 @@ public class ResourcesApplyController implements IResourcesApplyController{
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = resourcesApplyService.queryPage(params);
         return page;
+    }
+
+    @Override
+    public List<OauthOrganizationVO> getDeptList(Map<String, Object> params) {
+        List<OauthOrganizationVO> list = oauthOrganizationService.quertDeptList(new OauthOrganizationVO());
+        return list;
+    }
+
+    @Override
+    public List<OauthUserVO> getUserList(Map<String, Object> params) {
+
+        List<OauthUserVO> list = oauthUserService.quertUserList(new OauthUserVO());
+        System.out.println(list);
+        return list;
     }
 
 
