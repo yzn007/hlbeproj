@@ -149,6 +149,13 @@ public class HttpClientUtils {
         return result.replaceAll("null", "\"\"");
     }
 
+    /**
+     * 接口不通返回测试数据
+     * @param isDetail
+     * @param isExitsNotGen
+     * @param id
+     * @return
+     */
     public static String returnTest(boolean isDetail,boolean isExitsNotGen,int id) {
         String postNames = "";
         if (!isDetail)
