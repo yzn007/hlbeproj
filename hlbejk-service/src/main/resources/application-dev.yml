@@ -16,16 +16,21 @@ spring:
       primary: master #设置默认的数据源或者数据源组,默认值即为master
       datasource:
         master:
-          url: jdbc:mysql://127.0.0.1:3306/yunyingjianguan?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          url: jdbc:mysql://127.0.0.1:3307/yunyingjianguan117?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
-          password: rsj19941219
+          password: 123456
           driverClassName: com.mysql.cj.jdbc.Driver
         corc:
-          url: jdbc:mysql://127.0.0.1:3306/resourceapply?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          url: jdbc:mysql://127.0.0.1:3307/resourceapply?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
-          password: rsj19941219
-          driverClassName:  com.mysql.cj.jdbc.Driver
-
+          password: 123456
+          driverClassName: com.mysql.cj.jdbc.Driver
+#接口地址
+interface:
+#算法
+  program:
+    typenames: http://10.1.1.233:8010/saim/v1/interactive/getalgtype
+    programDetail: http://10.1.1.233:8010/saim/v1/interactive/alginfo
 ribbon:
   eureka:
     enabled: true

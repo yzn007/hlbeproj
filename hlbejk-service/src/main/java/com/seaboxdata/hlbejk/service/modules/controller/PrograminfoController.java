@@ -16,6 +16,7 @@ import netscape.javascript.JSObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.collections.CaseInsensitiveKeyMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,9 +36,12 @@ import sun.net.www.http.HttpClient;
 public class PrograminfoController implements IPrograminfoController {
 
     //算法名称接口
-    final String urlNames="http://10.1.1.233:8010/saim/v1/interactive/getalgtype";
+    @Value("#{'${interface.program.typenames}'}")
+    String urlNames="http://10.1.1.233:8010/saim/v1/interactive/getalgtype1";
     //算法详细接口
-    final String urlProgramDetail="http://10.1.1.233:8010/saim/v1/interactive/alginfo";
+    @Value("#{'${interface.program.programDetail}'}")
+    String urlProgramDetail="http://10.1.1.233:8010/saim/v1/interactive/alginfo1";
+
 
     @Override
     public List<PrograminfoVO> selectList() {
