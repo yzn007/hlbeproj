@@ -45,7 +45,9 @@
         <if test="param.isOrder!=''">
             order by sum(accDataTraffic) desc
         </if>
-        ) a group  by districtCode
+        ) a
+        where districtCode is not null
+        group  by districtCode
         order by accDataTraffic desc
     </select>
     <!-- 根据年月返回合计 -->
