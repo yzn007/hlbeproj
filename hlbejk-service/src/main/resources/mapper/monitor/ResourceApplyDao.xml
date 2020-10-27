@@ -27,10 +27,13 @@ FROM
 INNER JOIN resources_apply_item ri ON ri.apply_id = ra.id
 LEFT JOIN resources_apply_dept_group rad ON ra.dept_group_id = rad.id
 LEFT JOIN resources_apply_group rag ON ra.group_id = rag.id
-INNER JOIN resources_apply_sum ras ON ra.apply_sum_id = ras.id
+INNER JOIN resources_apply_sum ras ON ra.apply_sum_id = ras.id left JOIN
+        oauth_organization oo on oo.id = ra.create_organ
+        where 1=1
 <if test="param.name!=null">
-    where instr(  ra.create_organ,#{param.name})>0
+    and instr(  oo.organization_name,#{param.name})>0
 </if>
+        order by ra.modify_tm desc
     </select>
 
 

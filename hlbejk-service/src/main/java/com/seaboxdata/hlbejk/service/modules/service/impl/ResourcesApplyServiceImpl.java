@@ -1,6 +1,7 @@
 package com.seaboxdata.hlbejk.service.modules.service.impl;
 
 import cn.hutool.core.map.CaseInsensitiveMap;
+import cn.hutool.db.sql.Order;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.seaboxdata.hlbejk.api.vo.ResourcesApplyVO;
@@ -26,6 +27,7 @@ public class ResourcesApplyServiceImpl extends ServiceImpl<ResourcesApplyDao, Re
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.orderByDesc("modify_tm");
         if(null != params.get("key") && !"".equals(params.get("key"))){
             queryWrapper.like("create_organ", params.get("key"));
         }
