@@ -109,4 +109,123 @@ public class ApplicationapplyVO implements Serializable {
 	@ApiModelProperty(value = "应用发布地址")
 	private String releaseurl;
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getApplytype() {
+		return applytype;
+	}
+
+	public void setApplytype(String applytype) {
+		this.applytype = applytype;
+	}
+
+	public String getApplylist() {
+		return applylist;
+	}
+
+	public void setApplylist(String applylist) {
+		this.applylist = applylist;
+	}
+
+	public String getApplystate() {
+		return applystate;
+	}
+
+	public void setApplystate(String applystate) {
+		this.applystate = applystate;
+	}
+
+	public String getApplytime() {
+		return applytime;
+	}
+
+	public void setApplytime(String applytime) {
+		this.applytime = applytime;
+	}
+
+	public String getApplymessage() {
+		return applymessage;
+	}
+
+	public void setApplymessage(String applymessage) {
+		this.applymessage = applymessage;
+	}
+
+	public String getSponsoruserid() {
+		return sponsoruserid;
+	}
+
+	public void setSponsoruserid(String sponsoruserid) {
+		this.sponsoruserid = sponsoruserid;
+	}
+
+	public String getSponsordeptrid() {
+		return sponsordeptrid;
+	}
+
+	public void setSponsordeptrid(String sponsordeptrid) {
+		this.sponsordeptrid = sponsordeptrid;
+	}
+
+	public String getRevieweruserid() {
+		return revieweruserid;
+	}
+
+	public void setRevieweruserid(String revieweruserid) {
+		this.revieweruserid = revieweruserid;
+	}
+
+	public String getReviewerdeptid() {
+		return reviewerdeptid;
+	}
+
+	public void setReviewerdeptid(String reviewerdeptid) {
+		this.reviewerdeptid = reviewerdeptid;
+	}
+
+	public String getRejectmessage() {
+		return rejectmessage;
+	}
+
+	public void setRejectmessage(String rejectmessage) {
+		this.rejectmessage = rejectmessage;
+	}
+
+	public String getUpdatetimes() {
+		return updatetimes;
+	}
+
+	public void setUpdatetimes(String updatetimes) {
+		this.updatetimes = updatetimes;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public String getFileid() {
+		return fileid;
+	}
+
+	public void setFileid(String fileid) {
+		this.fileid = fileid;
+	}
+
+	public String getReleaseurl() {
+		return releaseurl;
+	}
+
+	public void setReleaseurl(String releaseurl) {
+		this.releaseurl = releaseurl;
+	}
 }

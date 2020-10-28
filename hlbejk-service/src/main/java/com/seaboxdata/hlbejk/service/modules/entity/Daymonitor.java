@@ -98,4 +98,83 @@ public class Daymonitor implements Serializable {
 		return daymonitorVo;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDistrictcode() {
+		return districtcode;
+	}
+
+	public void setDistrictcode(String districtcode) {
+		this.districtcode = districtcode;
+	}
+
+	public BigDecimal getAccapidata() {
+		return accapidata;
+	}
+
+	public void setAccapidata(BigDecimal accapidata) {
+		this.accapidata = accapidata;
+	}
+
+	public BigDecimal getAccmodeldata() {
+		return accmodeldata;
+	}
+
+	public void setAccmodeldata(BigDecimal accmodeldata) {
+		this.accmodeldata = accmodeldata;
+	}
+
+	public BigDecimal getAccdatatraffic() {
+		return accdatatraffic;
+	}
+
+	public void setAccdatatraffic(BigDecimal accdatatraffic) {
+		this.accdatatraffic = accdatatraffic;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getYearmnnth() {
+		return yearmnnth;
+	}
+
+	public void setYearmnnth(String yearmnnth) {
+		this.yearmnnth = yearmnnth;
+	}
+
+	public int getAccnum() {
+		return accnum;
+	}
+
+	public void setAccnum(int accnum) {
+		this.accnum = accnum;
+	}
+
+	public int getApplynum() {
+		return applynum;
+	}
+
+	public void setApplynum(int applynum) {
+		this.applynum = applynum;
+	}
+
+	public String getMonitorid() {
+		return monitorid;
+	}
+
+	public void setMonitorid(String monitorid) {
+		this.monitorid = monitorid;
+	}
 }

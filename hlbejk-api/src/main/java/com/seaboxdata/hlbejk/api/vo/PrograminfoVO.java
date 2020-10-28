@@ -94,5 +94,91 @@ public class PrograminfoVO implements Serializable {
 	@ApiModelProperty(value = "参数设置")
 	private String programparams;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getProgramname() {
+		return programname;
+	}
+
+	public void setProgramname(String programname) {
+		this.programname = programname;
+	}
+
+	public String getProgramid() {
+		return programid;
+	}
+
+	public void setProgramid(String programid) {
+		this.programid = programid;
+	}
+
+	public String getProgramtype() {
+		return programtype;
+	}
+
+	public void setProgramtype(String programtype) {
+		this.programtype = programtype;
+	}
+
+	public String getProgramaddr() {
+		return programaddr;
+	}
+
+	public void setProgramaddr(String programaddr) {
+		this.programaddr = programaddr;
+	}
+
+	public String getProgramapi() {
+		return programapi;
+	}
+
+	public void setProgramapi(String programapi) {
+		this.programapi = programapi;
+	}
+
+	public String getProgramtag() {
+		return programtag;
+	}
+
+	public void setProgramtag(String programtag) {
+		this.programtag = programtag;
+	}
+
+	public Date getUpdatetime() {
+		return updatetime;
+	}
+
+	public void setUpdatetime(Date updatetime) {
+		this.updatetime = updatetime;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getProgramdesc() {
+		return programdesc;
+	}
+
+	public void setProgramdesc(String programdesc) {
+		this.programdesc = programdesc;
+	}
+
+	public String getProgramparams() {
+		return programparams;
+	}
+
+	public void setProgramparams(String programparams) {
+		this.programparams = programparams;
+	}
 }

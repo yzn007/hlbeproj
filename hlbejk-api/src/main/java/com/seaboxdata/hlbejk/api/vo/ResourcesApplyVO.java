@@ -142,6 +142,10 @@ public class ResourcesApplyVO implements Serializable {
 	@ApiModelProperty(value = "内部分组id")
 	private Long deptGroupId;
 
+	@ApiModelProperty(value = "资源名称")
+	private String 	resourceName;
+
+
 	/**
 	 * 是否使用部门资源池数据
 	 */
@@ -149,4 +153,171 @@ public class ResourcesApplyVO implements Serializable {
 	private Integer isUsedDepRes;
 
 
+	public String getResourceName() {
+		return resourceName;
+	}
+
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getResourcesCatalogueId() {
+		return resourcesCatalogueId;
+	}
+
+	public void setResourcesCatalogueId(Long resourcesCatalogueId) {
+		this.resourcesCatalogueId = resourcesCatalogueId;
+	}
+
+	public Integer getIsUsedSystem() {
+		return isUsedSystem;
+	}
+
+	public void setIsUsedSystem(Integer isUsedSystem) {
+		this.isUsedSystem = isUsedSystem;
+	}
+
+	public String getSystemName() {
+		return systemName;
+	}
+
+	public void setSystemName(String systemName) {
+		this.systemName = systemName;
+	}
+
+	public String getApplyReason() {
+		return applyReason;
+	}
+
+	public void setApplyReason(String applyReason) {
+		this.applyReason = applyReason;
+	}
+
+	public Long getTenantId() {
+		return tenantId;
+	}
+
+	public void setTenantId(Long tenantId) {
+		this.tenantId = tenantId;
+	}
+
+	public Long getCreator() {
+		return creator;
+	}
+
+	public void setCreator(Long creator) {
+		this.creator = creator;
+	}
+
+	public Long getModifier() {
+		return modifier;
+	}
+
+	public void setModifier(Long modifier) {
+		this.modifier = modifier;
+	}
+
+	public Date getModifyTm() {
+		return modifyTm;
+	}
+
+	public void setModifyTm(Date modifyTm) {
+		this.modifyTm = modifyTm;
+	}
+
+	public Date getCreateTm() {
+		return createTm;
+	}
+
+	public void setCreateTm(Date createTm) {
+		this.createTm = createTm;
+	}
+
+	public String getReviewStatus() {
+		return reviewStatus;
+	}
+
+	public void setReviewStatus(String reviewStatus) {
+		this.reviewStatus = reviewStatus;
+	}
+
+	public Long getCreateOrgan() {
+		return createOrgan;
+	}
+
+	public void setCreateOrgan(Long createOrgan) {
+		this.createOrgan = createOrgan;
+	}
+
+	public Integer getDelStatus() {
+		return delStatus;
+	}
+
+	public void setDelStatus(Integer delStatus) {
+		this.delStatus = delStatus;
+	}
+
+	public String getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
+	}
+
+	public Long getResourceOrgan() {
+		return resourceOrgan;
+	}
+
+	public void setResourceOrgan(Long resourceOrgan) {
+		this.resourceOrgan = resourceOrgan;
+	}
+
+	public String getTaskType() {
+		return taskType;
+	}
+
+	public void setTaskType(String taskType) {
+		this.taskType = taskType;
+	}
+
+	public Long getApplySumId() {
+		return applySumId;
+	}
+
+	public void setApplySumId(Long applySumId) {
+		this.applySumId = applySumId;
+	}
+
+	public Long getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(Long groupId) {
+		this.groupId = groupId;
+	}
+
+	public Long getDeptGroupId() {
+		return deptGroupId;
+	}
+
+	public void setDeptGroupId(Long deptGroupId) {
+		this.deptGroupId = deptGroupId;
+	}
+
+	public Integer getIsUsedDepRes() {
+		return isUsedDepRes;
+	}
+
+	public void setIsUsedDepRes(Integer isUsedDepRes) {
+		this.isUsedDepRes = isUsedDepRes;
+	}
 }

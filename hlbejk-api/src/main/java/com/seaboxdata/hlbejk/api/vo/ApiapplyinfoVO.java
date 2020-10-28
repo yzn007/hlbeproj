@@ -76,5 +76,67 @@ public class ApiapplyinfoVO implements Serializable {
 	@ApiModelProperty(value = "用户监控Id")
 	private String monitorid;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getApiname() {
+		return apiname;
+	}
+
+	public void setApiname(String apiname) {
+		this.apiname = apiname;
+	}
+
+	public String getApiaddr() {
+		return apiaddr;
+	}
+
+	public void setApiaddr(String apiaddr) {
+		this.apiaddr = apiaddr;
+	}
+
+	public Date getApplydate() {
+		return applydate;
+	}
+
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
+	}
+
+	public String getApprovalstate() {
+		return approvalstate;
+	}
+
+	public void setApprovalstate(String approvalstate) {
+		this.approvalstate = approvalstate;
+	}
+
+	public String getApicallperiod() {
+		return apicallperiod;
+	}
+
+	public void setApicallperiod(String apicallperiod) {
+		this.apicallperiod = apicallperiod;
+	}
+
+	public String getApiauthor() {
+		return apiauthor;
+	}
+
+	public void setApiauthor(String apiauthor) {
+		this.apiauthor = apiauthor;
+	}
+
+	public String getMonitorid() {
+		return monitorid;
+	}
+
+	public void setMonitorid(String monitorid) {
+		this.monitorid = monitorid;
+	}
 }

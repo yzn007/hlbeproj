@@ -10,30 +10,35 @@
         <result property="createOrgan" column="create_organ"/>
         <result property="resourceOrgan" column="resource_organ"/>
         <result property="taskType" column="task_type"/>
+        <result property="resourceName" column="resource_name"></result>
     </resultMap>
 
     <!-- 按名称返回取得资源 -->
     <select id="queryResource" resultMap="resourceMap">
         SELECT DISTINCT
-	ra.create_organ,
-	ra.creator,
-	ra.task_type,
-	ra.resource_organ,
-	ra.review_status,
-	ra.modifier,
-	ra.modify_tm
-FROM
-	resources_apply ra
-INNER JOIN resources_apply_item ri ON ri.apply_id = ra.id
-LEFT JOIN resources_apply_dept_group rad ON ra.dept_group_id = rad.id
-LEFT JOIN resources_apply_group rag ON ra.group_id = rag.id
-INNER JOIN resources_apply_sum ras ON ra.apply_sum_id = ras.id left JOIN
+        ra.create_organ,
+        ra.system_name,
+        ue.resource_name,
+        ra.creator,
+        ra.task_type,
+        ra.resource_organ,
+        ra.review_status,
+        ra.modifier,
+        ra.modify_tm
+        FROM
+        resources_apply ra
+        INNER JOIN resources_apply_item ri ON ri.apply_id = ra.id
+        LEFT JOIN resources_apply_dept_group rad ON ra.dept_group_id = rad.id
+        LEFT JOIN resources_apply_group rag ON ra.group_id = rag.id
+        INNER JOIN resources_apply_sum ras ON ra.apply_sum_id = ras.id left JOIN
         oauth_organization oo on oo.id = ra.create_organ
+        left JOIN resources_catalogue ue on ue.id=ra.resources_catalogue_id
         where 1=1
-<if test="param.name!=null">
-    and instr(  oo.organization_name,#{param.name})>0
-</if>
+    <if test="param.name!=null">
+        and oo.organization_name like concat('%', #{param.name}, '%')
+    </if>
         order by ra.modify_tm desc
+        LIMIT #{param.offSet},#{param.limit};
     </select>
 
 

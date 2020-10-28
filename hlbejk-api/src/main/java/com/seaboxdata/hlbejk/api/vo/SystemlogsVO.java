@@ -86,5 +86,83 @@ public class SystemlogsVO implements Serializable {
 	@ApiModelProperty(value = "状态")
 	private String state;
 
+	public String getNum() {
+		return num;
+	}
 
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getOpertype() {
+		return opertype;
+	}
+
+	public void setOpertype(String opertype) {
+		this.opertype = opertype;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getDeptid() {
+		return deptid;
+	}
+
+	public void setDeptid(String deptid) {
+		this.deptid = deptid;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public String getRemote() {
+		return remote;
+	}
+
+	public void setRemote(String remote) {
+		this.remote = remote;
+	}
+
+	public String getOperdate() {
+		return operdate;
+	}
+
+	public void setOperdate(String operdate) {
+		this.operdate = operdate;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 }

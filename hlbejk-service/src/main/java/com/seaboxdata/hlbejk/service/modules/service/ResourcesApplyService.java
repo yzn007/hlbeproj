@@ -26,6 +26,6 @@ public interface ResourcesApplyService extends IService<ResourcesApply> {
 
     Boolean update(ResourcesApply resourcesApply);
 
-    List<ResourcesApplyVO> queryResource(String name);
+    List<ResourcesApplyVO> queryResource(Map<String, Object> param);
 }
 

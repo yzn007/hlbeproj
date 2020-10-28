@@ -61,6 +61,52 @@ public class UsercallVO implements Serializable {
 	 */
 	@ApiModelProperty(value = "主键")
 		private String id;
-	
 
+	public Integer getCallnum() {
+		return callnum;
+	}
+
+	public void setCallnum(Integer callnum) {
+		this.callnum = callnum;
+	}
+
+	public String getChargetype() {
+		return chargetype;
+	}
+
+	public void setChargetype(String chargetype) {
+		this.chargetype = chargetype;
+	}
+
+	public String getCallperiod() {
+		return callperiod;
+	}
+
+	public void setCallperiod(String callperiod) {
+		this.callperiod = callperiod;
+	}
+
+	public BigDecimal getCost() {
+		return cost;
+	}
+
+	public void setCost(BigDecimal cost) {
+		this.cost = cost;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 }

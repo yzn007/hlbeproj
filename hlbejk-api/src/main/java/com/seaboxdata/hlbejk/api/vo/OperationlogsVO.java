@@ -79,5 +79,75 @@ public class OperationlogsVO implements Serializable {
 	@ApiModelProperty(value = "状态")
 	private String state;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getLogininfo() {
+		return logininfo;
+	}
+
+	public void setLogininfo(String logininfo) {
+		this.logininfo = logininfo;
+	}
+
+	public String getRequestaddr() {
+		return requestaddr;
+	}
+
+	public void setRequestaddr(String requestaddr) {
+		this.requestaddr = requestaddr;
+	}
+
+	public String getRequestmethor() {
+		return requestmethor;
+	}
+
+	public void setRequestmethor(String requestmethor) {
+		this.requestmethor = requestmethor;
+	}
+
+	public String getOperationfunction() {
+		return operationfunction;
+	}
+
+	public void setOperationfunction(String operationfunction) {
+		this.operationfunction = operationfunction;
+	}
+
+	public String getRequestparams() {
+		return requestparams;
+	}
+
+	public void setRequestparams(String requestparams) {
+		this.requestparams = requestparams;
+	}
+
+	public String getBackparams() {
+		return backparams;
+	}
+
+	public void setBackparams(String backparams) {
+		this.backparams = backparams;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 }

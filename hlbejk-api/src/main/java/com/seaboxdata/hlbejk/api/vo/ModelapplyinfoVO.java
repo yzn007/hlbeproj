@@ -85,5 +85,75 @@ public class ModelapplyinfoVO implements Serializable {
 	@ApiModelProperty(value="用户id")
 	private String userId;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getModelname() {
+		return modelname;
+	}
+
+	public void setModelname(String modelname) {
+		this.modelname = modelname;
+	}
+
+	public String getModeladdr() {
+		return modeladdr;
+	}
+
+	public void setModeladdr(String modeladdr) {
+		this.modeladdr = modeladdr;
+	}
+
+	public Date getApplydate() {
+		return applydate;
+	}
+
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
+	}
+
+	public String getApprovalstate() {
+		return approvalstate;
+	}
+
+	public void setApprovalstate(String approvalstate) {
+		this.approvalstate = approvalstate;
+	}
+
+	public String getModelcallperiod() {
+		return modelcallperiod;
+	}
+
+	public void setModelcallperiod(String modelcallperiod) {
+		this.modelcallperiod = modelcallperiod;
+	}
+
+	public String getModelauthor() {
+		return modelauthor;
+	}
+
+	public void setModelauthor(String modelauthor) {
+		this.modelauthor = modelauthor;
+	}
+
+	public String getMonitorid() {
+		return monitorid;
+	}
+
+	public void setMonitorid(String monitorid) {
+		this.monitorid = monitorid;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }

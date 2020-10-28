@@ -72,6 +72,69 @@ public class ChargesetVO implements Serializable {
 	 */
 	@ApiModelProperty(value = "主键")
 		private String id;
-	
 
+
+	public String getDeptid() {
+		return deptid;
+	}
+
+	public void setDeptid(String deptid) {
+		this.deptid = deptid;
+	}
+
+	public String getChargetype() {
+		return chargetype;
+	}
+
+	public void setChargetype(String chargetype) {
+		this.chargetype = chargetype;
+	}
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public String getDatatraffic() {
+		return datatraffic;
+	}
+
+	public void setDatatraffic(String datatraffic) {
+		this.datatraffic = datatraffic;
+	}
+
+	public Date getStartdate() {
+		return startdate;
+	}
+
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
+	}
+
+	public Date getEnddate() {
+		return enddate;
+	}
+
+	public void setEnddate(Date enddate) {
+		this.enddate = enddate;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 }

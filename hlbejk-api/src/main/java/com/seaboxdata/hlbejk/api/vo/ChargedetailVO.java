@@ -67,4 +67,60 @@ public class ChargedetailVO implements Serializable {
 	 */
 	@ApiModelProperty(value = "次数")
 	private int callnum;
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getChargetype() {
+		return chargetype;
+	}
+
+	public void setChargetype(String chargetype) {
+		this.chargetype = chargetype;
+	}
+
+	public String getCalldataname() {
+		return calldataname;
+	}
+
+	public void setCalldataname(String calldataname) {
+		this.calldataname = calldataname;
+	}
+
+	public Date getCalldate() {
+		return calldate;
+	}
+
+	public void setCalldate(Date calldate) {
+		this.calldate = calldate;
+	}
+
+	public BigDecimal getCost() {
+		return cost;
+	}
+
+	public void setCost(BigDecimal cost) {
+		this.cost = cost;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getCallnum() {
+		return callnum;
+	}
+
+	public void setCallnum(int callnum) {
+		this.callnum = callnum;
+	}
 }

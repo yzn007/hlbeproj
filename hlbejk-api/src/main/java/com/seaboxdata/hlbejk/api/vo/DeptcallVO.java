@@ -61,6 +61,52 @@ public class DeptcallVO implements Serializable {
 	 */
 	@ApiModelProperty(value = "")
 		private String id;
-	
 
+	public String getDeptid() {
+		return deptid;
+	}
+
+	public void setDeptid(String deptid) {
+		this.deptid = deptid;
+	}
+
+	public String getCallnum() {
+		return callnum;
+	}
+
+	public void setCallnum(String callnum) {
+		this.callnum = callnum;
+	}
+
+	public String getChargetype() {
+		return chargetype;
+	}
+
+	public void setChargetype(String chargetype) {
+		this.chargetype = chargetype;
+	}
+
+	public String getChargeperiod() {
+		return chargeperiod;
+	}
+
+	public void setChargeperiod(String chargeperiod) {
+		this.chargeperiod = chargeperiod;
+	}
+
+	public BigDecimal getCost() {
+		return cost;
+	}
+
+	public void setCost(BigDecimal cost) {
+		this.cost = cost;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 }

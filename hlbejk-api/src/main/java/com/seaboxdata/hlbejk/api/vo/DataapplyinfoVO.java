@@ -91,4 +91,83 @@ public class DataapplyinfoVO implements Serializable {
     @ApiModelProperty(value = "用户Id")
     private String userId;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDataresname() {
+        return dataresname;
+    }
+
+    public void setDataresname(String dataresname) {
+        this.dataresname = dataresname;
+    }
+
+    public String getDatatype() {
+        return datatype;
+    }
+
+    public void setDatatype(String datatype) {
+        this.datatype = datatype;
+    }
+
+    public String getDataaddr() {
+        return dataaddr;
+    }
+
+    public void setDataaddr(String dataaddr) {
+        this.dataaddr = dataaddr;
+    }
+
+    public Date getApplydate() {
+        return applydate;
+    }
+
+    public void setApplydate(Date applydate) {
+        this.applydate = applydate;
+    }
+
+    public String getApprovalstate() {
+        return approvalstate;
+    }
+
+    public void setApprovalstate(String approvalstate) {
+        this.approvalstate = approvalstate;
+    }
+
+    public String getDatacallperiod() {
+        return datacallperiod;
+    }
+
+    public void setDatacallperiod(String datacallperiod) {
+        this.datacallperiod = datacallperiod;
+    }
+
+    public String getDataauthor() {
+        return dataauthor;
+    }
+
+    public void setDataauthor(String dataauthor) {
+        this.dataauthor = dataauthor;
+    }
+
+    public String getMonitorid() {
+        return monitorid;
+    }
+
+    public void setMonitorid(String monitorid) {
+        this.monitorid = monitorid;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }

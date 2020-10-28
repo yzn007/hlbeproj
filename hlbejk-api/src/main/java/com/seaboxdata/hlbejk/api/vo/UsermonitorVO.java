@@ -43,5 +43,27 @@ public class UsermonitorVO implements Serializable {
 	@ApiModelProperty(value = "监控日期")
 	private Date applydate;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public Date getApplydate() {
+		return applydate;
+	}
+
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
+	}
 }

@@ -72,5 +72,59 @@ public class ApiaccessinfoVO implements Serializable {
 	@ApiModelProperty(value = "使用数据流量")
 	private BigDecimal usedatas;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getApiname() {
+		return apiname;
+	}
+
+	public void setApiname(String apiname) {
+		this.apiname = apiname;
+	}
+
+	public String getApiaddr() {
+		return apiaddr;
+	}
+
+	public void setApiaddr(String apiaddr) {
+		this.apiaddr = apiaddr;
+	}
+
+	public String getApplynum() {
+		return applynum;
+	}
+
+	public void setApplynum(String applynum) {
+		this.applynum = applynum;
+	}
+
+	public Date getApplydate() {
+		return applydate;
+	}
+
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
+	}
+
+	public String getMonitorid() {
+		return monitorid;
+	}
+
+	public void setMonitorid(String monitorid) {
+		this.monitorid = monitorid;
+	}
+
+	public BigDecimal getUsedatas() {
+		return usedatas;
+	}
+
+	public void setUsedatas(BigDecimal usedatas) {
+		this.usedatas = usedatas;
+	}
 }

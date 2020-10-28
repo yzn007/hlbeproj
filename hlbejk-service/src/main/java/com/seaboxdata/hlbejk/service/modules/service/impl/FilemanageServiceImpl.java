@@ -32,7 +32,7 @@ public class FilemanageServiceImpl extends ServiceImpl<FilemanageDao, Filemanage
     @Override
     public List<FilemanageVO> queryByIds(Map<String, Object> params) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        if(!"".equals(params.get("fileids"))){
+        if(!"".equals(params.get("fileids")) && null!=params.get("fileids")){
            String fileids =  params.get("fileids").toString();
            if(fileids.indexOf(",")!=-1){
                String[] files =  fileids.split(",");
@@ -43,7 +43,6 @@ public class FilemanageServiceImpl extends ServiceImpl<FilemanageDao, Filemanage
         }
         queryWrapper = (QueryWrapper) queryWrapper.orderByDesc("uploadTime");
         List<FilemanageVO> list = this.list(queryWrapper);
-        System.out.println(list.size());
         return  list;
     }
 

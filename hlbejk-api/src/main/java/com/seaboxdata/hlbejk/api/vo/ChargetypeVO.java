@@ -68,5 +68,59 @@ public class ChargetypeVO implements Serializable {
 	@ApiModelProperty(value = "调用类型")
 	private String calltype;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getIschargeoverflow() {
+		return ischargeoverflow;
+	}
+
+	public void setIschargeoverflow(String ischargeoverflow) {
+		this.ischargeoverflow = ischargeoverflow;
+	}
+
+	public String getChargetype() {
+		return chargetype;
+	}
+
+	public void setChargetype(String chargetype) {
+		this.chargetype = chargetype;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+	public String getChargename() {
+		return chargename;
+	}
+
+	public void setChargename(String chargename) {
+		this.chargename = chargename;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCalltype() {
+		return calltype;
+	}
+
+	public void setCalltype(String calltype) {
+		this.calltype = calltype;
+	}
 }

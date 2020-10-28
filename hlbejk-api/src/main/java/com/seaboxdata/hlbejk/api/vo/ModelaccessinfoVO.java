@@ -84,4 +84,67 @@ public class ModelaccessinfoVO implements Serializable {
 	@ApiModelProperty(value="用户id")
 	private String userId;
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getModelname() {
+		return modelname;
+	}
+
+	public void setModelname(String modelname) {
+		this.modelname = modelname;
+	}
+
+	public String getModeladdr() {
+		return modeladdr;
+	}
+
+	public void setModeladdr(String modeladdr) {
+		this.modeladdr = modeladdr;
+	}
+
+	public BigDecimal getUsedatas() {
+		return usedatas;
+	}
+
+	public void setUsedatas(BigDecimal usedatas) {
+		this.usedatas = usedatas;
+	}
+
+	public String getApplynum() {
+		return applynum;
+	}
+
+	public void setApplynum(String applynum) {
+		this.applynum = applynum;
+	}
+
+	public Date getApplydate() {
+		return applydate;
+	}
+
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
+	}
+
+	public String getMonitorid() {
+		return monitorid;
+	}
+
+	public void setMonitorid(String monitorid) {
+		this.monitorid = monitorid;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }

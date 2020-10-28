@@ -67,5 +67,59 @@ public class DatamanagerVO implements Serializable {
 	@ApiModelProperty(value = "状态")
 	private String state;
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDataname() {
+		return dataname;
+	}
+
+	public void setDataname(String dataname) {
+		this.dataname = dataname;
+	}
+
+	public String getDatatype() {
+		return datatype;
+	}
+
+	public void setDatatype(String datatype) {
+		this.datatype = datatype;
+	}
+
+	public String getDtbase() {
+		return dtbase;
+	}
+
+	public void setDtbase(String dtbase) {
+		this.dtbase = dtbase;
+	}
+
+	public Date getPublishtime() {
+		return publishtime;
+	}
+
+	public void setPublishtime(Date publishtime) {
+		this.publishtime = publishtime;
+	}
+
+	public Date getUpdatetime() {
+		return updatetime;
+	}
+
+	public void setUpdatetime(Date updatetime) {
+		this.updatetime = updatetime;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 }

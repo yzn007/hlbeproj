@@ -84,4 +84,84 @@ public class Dataaccessinfo implements Serializable {
      */
     @Transient
     private transient String userId;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDataresname() {
+        return dataresname;
+    }
+
+    public void setDataresname(String dataresname) {
+        this.dataresname = dataresname;
+    }
+
+    public String getDatatype() {
+        return datatype;
+    }
+
+    public void setDatatype(String datatype) {
+        this.datatype = datatype;
+    }
+
+    public String getDateaddr() {
+        return dateaddr;
+    }
+
+    public void setDateaddr(String dateaddr) {
+        this.dateaddr = dateaddr;
+    }
+
+    public String getApplynum() {
+        return applynum;
+    }
+
+    public void setApplynum(String applynum) {
+        this.applynum = applynum;
+    }
+
+    public Date getApplydate() {
+        return applydate;
+    }
+
+    public void setApplydate(Date applydate) {
+        this.applydate = applydate;
+    }
+
+    public String getDatarange() {
+        return datarange;
+    }
+
+    public void setDatarange(String datarange) {
+        this.datarange = datarange;
+    }
+
+    public BigDecimal getUsedatas() {
+        return usedatas;
+    }
+
+    public void setUsedatas(BigDecimal usedatas) {
+        this.usedatas = usedatas;
+    }
+
+    public String getMonitorid() {
+        return monitorid;
+    }
+
+    public void setMonitorid(String monitorid) {
+        this.monitorid = monitorid;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }
