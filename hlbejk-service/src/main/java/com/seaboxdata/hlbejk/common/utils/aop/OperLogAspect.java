@@ -117,8 +117,8 @@ public class OperLogAspect {
 
 			operlog.setOperRequParam(params); // 请求参数
 			operlog.setOperRespParam(JSON.toJSONString(keys)); // 返回结果
-			//operlog.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 请求用户ID
-			//operlog.setOperUserName(authUserInService.getLoginUser().getName()); // 请求用户名称
+			operlog.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 请求用户ID
+			operlog.setOperUserName(authUserInService.getLoginUser().getName()); // 请求用户名称
 			operlog.setOperIp(IPUtil.getRemortIP(request)); // 请求IP
 			operlog.setOperUri(request.getRequestURI()); // 请求URI
 			operlog.setOperCreateTime(new Date()); // 创建时间
@@ -165,8 +165,8 @@ public class OperLogAspect {
 			excepLog.setOperMethod(methodName); // 请求方法名
 			excepLog.setExcName(e.getClass().getName()); // 异常名称
 			excepLog.setExcMessage(stackTraceToString(e.getClass().getName(), e.getMessage(), e.getStackTrace())); // 异常信息
-			//excepLog.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 操作员ID
-			//excepLog.setOperUserName(authUserInService.getLoginUser().getName()); // 操作员名称
+			excepLog.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 操作员ID
+			excepLog.setOperUserName(authUserInService.getLoginUser().getName()); // 操作员名称
 			excepLog.setOperUri(request.getRequestURI()); // 操作URI
 			excepLog.setOperIp(IPUtil.getRemortIP(request)); // 操作员IP
 			excepLog.setOperVer(operVer); // 操作版本号
