@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.ExceptionLogDao">
+
+    <select id="queryPage" resultType="com.seaboxdata.hlbejk.service.modules.entity.ExceptionLog">
+		SELECT
+		    t.exc_id,
+		    t.exc_requ_param,
+		    t.exc_name,
+		    t.exc_message,
+		    t.oper_user_id,
+		    t.oper_user_name,
+		    t.oper_method,
+		    t.oper_uri,
+		    t.oper_ip,
+		    DATE_FORMAT(t.oper_create_time, '%Y-%m-%d %H:%i:%s') oper_create_time,
+		    t.oper_ver
+		FROM
+		    exception_log t 
+		<where>
+			<if test="operUserName!='' and operUserName!=null">
+				t.oper_user_name LIKE concat('%',#{operUserName},'%')
+			</if>
+			<if test="startDate!='' and startDate!=null">
+				and t.oper_create_time &gt;= STR_TO_DATE(#{startDate}, '%Y-%m-%d %H:%i:%s')
+			</if>
+			<if test="endDate!='' and endDate!=null">
+				and t.oper_create_time &lt;= STR_TO_DATE(concat(#{endDate},' 23:59:59'), '%Y-%m-%d %H:%i:%s')
+			</if>
+		</where>
+		order by 
+			t.oper_create_time desc
+    </select>
+
+</mapper>
