@@ -7,7 +7,7 @@
 		SELECT
 		    t.oper_id,
 		    t.oper_modul,
-		    a.type_desc oper_type,,
+		    a.type_desc oper_type,
 		    t.oper_desc,
 		    t.oper_requ_param,
 		    t.oper_resp_param,
