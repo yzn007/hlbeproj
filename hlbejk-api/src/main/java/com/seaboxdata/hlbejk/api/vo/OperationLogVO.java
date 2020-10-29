@@ -63,4 +63,107 @@ public class OperationLogVO implements Serializable {
 	@ApiModelProperty(value = "操作版本")
 	private String OperVer; // 操作版本
 
+	public String getOperId() {
+		return operId;
+	}
+
+	public void setOperId(String operId) {
+		this.operId = operId;
+	}
+
+	public String getOperModul() {
+		return operModul;
+	}
+
+	public void setOperModul(String operModul) {
+		this.operModul = operModul;
+	}
+
+	public String getOperType() {
+		return operType;
+	}
+
+	public void setOperType(String operType) {
+		this.operType = operType;
+	}
+
+	public String getOperDesc() {
+		return operDesc;
+	}
+
+	public void setOperDesc(String operDesc) {
+		this.operDesc = operDesc;
+	}
+
+	public String getOperMethod() {
+		return operMethod;
+	}
+
+	public void setOperMethod(String operMethod) {
+		this.operMethod = operMethod;
+	}
+
+	public String getOperRequParam() {
+		return operRequParam;
+	}
+
+	public void setOperRequParam(String operRequParam) {
+		this.operRequParam = operRequParam;
+	}
+
+	public String getOperRespParam() {
+		return operRespParam;
+	}
+
+	public void setOperRespParam(String operRespParam) {
+		this.operRespParam = operRespParam;
+	}
+
+	public String getOperUserId() {
+		return operUserId;
+	}
+
+	public void setOperUserId(String operUserId) {
+		this.operUserId = operUserId;
+	}
+
+	public String getOperUserName() {
+		return operUserName;
+	}
+
+	public void setOperUserName(String operUserName) {
+		this.operUserName = operUserName;
+	}
+
+	public String getOperIp() {
+		return operIp;
+	}
+
+	public void setOperIp(String operIp) {
+		this.operIp = operIp;
+	}
+
+	public String getOperUri() {
+		return operUri;
+	}
+
+	public void setOperUri(String operUri) {
+		this.operUri = operUri;
+	}
+
+	public Date getOperCreateTime() {
+		return OperCreateTime;
+	}
+
+	public void setOperCreateTime(Date operCreateTime) {
+		OperCreateTime = operCreateTime;
+	}
+
+	public String getOperVer() {
+		return OperVer;
+	}
+
+	public void setOperVer(String operVer) {
+		OperVer = operVer;
+	}
 }

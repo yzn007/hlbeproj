@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IApiapplyinfoController;
 import com.seaboxdata.hlbejk.api.vo.ApiapplyinfoVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Apiapplyinfo;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.ApiapplyinfoService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ public class ApiapplyinfoController implements IApiapplyinfoController{
     /**
      * 列表
      */
+    @OperLog(operModul = "查询接口申请信息",operType = OperateType.QUERY,operDesc = "查询接口申请信息")
     @Override
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = apiapplyinfoService.queryPage(params);
@@ -41,6 +44,7 @@ public class ApiapplyinfoController implements IApiapplyinfoController{
     /**
      * 信息
      */
+    @OperLog(operModul = "查询接口申请信息",operType = OperateType.QUERY,operDesc = "根据id查询接口申请信息")
     @Override
     public ApiapplyinfoVO info(@PathVariable("id") String id){
         Apiapplyinfo apiapplyinfo = apiapplyinfoService.queryById(id);
@@ -52,6 +56,7 @@ public class ApiapplyinfoController implements IApiapplyinfoController{
     /**
      * 保存
      */
+    @OperLog(operModul = "新增接口申请信息",operType = OperateType.ADD,operDesc = "新增接口申请信息")
     @Override
     public Boolean save(@RequestBody ApiapplyinfoVO apiapplyinfoVO){
         Apiapplyinfo apiapplyinfo = new Apiapplyinfo();
@@ -62,6 +67,7 @@ public class ApiapplyinfoController implements IApiapplyinfoController{
     /**
      * 修改
      */
+    @OperLog(operModul = "更新接口申请信息",operType = OperateType.UPDATE,operDesc = "更新接口申请信息")
     @Override
     public Boolean update(@RequestBody ApiapplyinfoVO apiapplyinfoVO){
         Apiapplyinfo apiapplyinfo = new Apiapplyinfo();
@@ -72,6 +78,7 @@ public class ApiapplyinfoController implements IApiapplyinfoController{
     /**
      * 删除
      */
+    @OperLog(operModul = "删除接口申请信息",operType = OperateType.DELETE,operDesc = "删除接口申请信息")
     @Override
     public Boolean delete(@RequestBody String[] ids){
         return apiapplyinfoService.removeByIds(Arrays.asList(ids));

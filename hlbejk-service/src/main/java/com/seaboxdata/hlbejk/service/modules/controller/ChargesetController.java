@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IChargesetController;
 import com.seaboxdata.hlbejk.api.vo.ChargesetVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Chargeset;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.ChargesetService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ public class ChargesetController implements IChargesetController{
     /**
      * 列表
      */
+    @OperLog(operModul = "查询计费设置列表",operType = OperateType.QUERY,operDesc = "查询计费设置列表")
     @Override
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = chargesetService.queryPage(params);
@@ -41,6 +44,7 @@ public class ChargesetController implements IChargesetController{
     /**
      * 信息
      */
+    @OperLog(operModul = "查询计费设置信息",operType = OperateType.QUERY,operDesc = "根据id查询计费设置信息")
     @Override
     public ChargesetVO info(@PathVariable("id") String id){
         Chargeset chargeset = chargesetService.queryById(id);
@@ -52,6 +56,7 @@ public class ChargesetController implements IChargesetController{
     /**
      * 保存
      */
+    @OperLog(operModul = "新增计费设置信息",operType = OperateType.ADD,operDesc = "新增计费设置信息")
     @Override
     public Boolean save(@RequestBody ChargesetVO chargesetVO){
         Chargeset chargeset = new Chargeset();
@@ -62,6 +67,7 @@ public class ChargesetController implements IChargesetController{
     /**
      * 修改
      */
+    @OperLog(operModul = "修改计费设置信息",operType = OperateType.UPDATE,operDesc = "修改计费设置信息")
     @Override
     public Boolean update(@RequestBody ChargesetVO chargesetVO){
         Chargeset chargeset = new Chargeset();
@@ -72,6 +78,7 @@ public class ChargesetController implements IChargesetController{
     /**
      * 删除
      */
+    @OperLog(operModul = "删除计费设置信息",operType = OperateType.DELETE,operDesc = "删除计费设置信息")
     @Override
     public Boolean delete(@RequestBody String[] ids){
         return chargesetService.removeByIds(Arrays.asList(ids));

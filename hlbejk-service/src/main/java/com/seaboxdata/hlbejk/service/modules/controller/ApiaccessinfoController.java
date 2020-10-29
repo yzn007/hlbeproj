@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IApiaccessinfoController;
 import com.seaboxdata.hlbejk.api.vo.ApiaccessinfoVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Apiaccessinfo;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.ApiaccessinfoService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ public class ApiaccessinfoController implements IApiaccessinfoController{
     /**
      * 列表
      */
+    @OperLog(operModul = "接口调用管理",operType = OperateType.QUERY,operDesc = "接口调用管理")
     @Override
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = apiaccessinfoService.queryPage(params);
@@ -41,6 +44,7 @@ public class ApiaccessinfoController implements IApiaccessinfoController{
     /**
      * 信息
      */
+    @OperLog(operModul = "查询接口调用信息",operType = OperateType.QUERY,operDesc = "根据id查询接口调用信息")
     @Override
     public ApiaccessinfoVO info(@PathVariable("id") String id){
         Apiaccessinfo apiaccessinfo = apiaccessinfoService.queryById(id);
@@ -52,6 +56,7 @@ public class ApiaccessinfoController implements IApiaccessinfoController{
     /**
      * 保存
      */
+    @OperLog(operModul = "新增接口调用信息",operType = OperateType.ADD,operDesc = "新增接口调用信息")
     @Override
     public Boolean save(@RequestBody ApiaccessinfoVO apiaccessinfoVO){
         Apiaccessinfo apiaccessinfo = new Apiaccessinfo();
@@ -62,6 +67,7 @@ public class ApiaccessinfoController implements IApiaccessinfoController{
     /**
      * 修改
      */
+    @OperLog(operModul = "更新接口调用信息",operType = OperateType.UPDATE,operDesc = "更新接口调用信息")
     @Override
     public Boolean update(@RequestBody ApiaccessinfoVO apiaccessinfoVO){
         Apiaccessinfo apiaccessinfo = new Apiaccessinfo();
@@ -72,6 +78,7 @@ public class ApiaccessinfoController implements IApiaccessinfoController{
     /**
      * 删除
      */
+    @OperLog(operModul = "删除接口调用信息",operType = OperateType.DELETE,operDesc = "删除接口调用信息")
     @Override
     public Boolean delete(@RequestBody String[] ids){
         return apiaccessinfoService.removeByIds(Arrays.asList(ids));

@@ -31,7 +31,7 @@ public class ApplicationapplyServiceImpl extends ServiceImpl<ApplicationapplyDao
             }else{
                 queryWrapper.eq("applyState",params.get("applyState"));
             }
-
+            queryWrapper.orderByDesc("applyTime","updateTimes");
         }
 
         IPage<Applicationapply> page = this.page(

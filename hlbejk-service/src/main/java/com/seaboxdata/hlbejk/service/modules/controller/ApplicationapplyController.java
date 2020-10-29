@@ -3,9 +3,14 @@ package com.seaboxdata.hlbejk.service.modules.controller;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
+
+import com.seaboxdata.authuc.api.service.AuthUserInService;
+import com.seaboxdata.authuc.api.vo.local.OauthUserInfoCommonVO;
 import com.seaboxdata.hlbejk.api.controller.IApplicationapplyController;
 import com.seaboxdata.hlbejk.api.vo.ApplicationapplyVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Applicationapply;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.ApplicationapplyService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.hlbejk.service.utils.DateToolsUtils;
@@ -30,10 +35,12 @@ public class ApplicationapplyController implements IApplicationapplyController{
 
     @Autowired
     private ApplicationapplyService applicationapplyService;
-
+    @Autowired
+    private AuthUserInService authUserInService;
     /**
      * 列表delete
      */
+    @OperLog(operModul = "查询应用申请列表",operType = OperateType.QUERY,operDesc = "查询应用申请列表")
     @Override
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = applicationapplyService.queryPage(params);
@@ -44,6 +51,7 @@ public class ApplicationapplyController implements IApplicationapplyController{
     /**
      * 信息
      */
+    @OperLog(operModul = "查询应用申请信息",operType = OperateType.QUERY,operDesc = "根据id查询应用申请信息")
     @Override
     public ApplicationapplyVO info(@PathVariable("id") String id){
         Applicationapply applicationapply = applicationapplyService.queryById(id);
@@ -55,6 +63,7 @@ public class ApplicationapplyController implements IApplicationapplyController{
     /**
      * 保存
      */
+    @OperLog(operModul = "新增应用申请信息",operType = OperateType.ADD,operDesc = "新增应用申请信息")
     @Override
     public Boolean save(@RequestBody ApplicationapplyVO applicationapplyVO){
         Applicationapply applicationapply = new Applicationapply();
@@ -62,11 +71,14 @@ public class ApplicationapplyController implements IApplicationapplyController{
         applicationapply.setId(UUIDUtils.getUUID());
         applicationapply.setApplystate("0");
         applicationapply.setApplytime(DateToolsUtils.toDataStr(new Date(),"yyyy-MM-dd HH:mm:ss"));
-        //演示需要，默认假部门，假用户
-        applicationapply.setRevieweruserid("258631072449957888");
+        OauthUserInfoCommonVO loginUser = authUserInService.getLoginUser();
+        //演示需要，默认假部门
+        applicationapply.setRevieweruserid("206659250594910208");
         applicationapply.setReviewerdeptid("1");
-        //申请人
-        applicationapply.setSponsoruserid("261498269996290048");
+        //申请人id
+        Long sponsorUserId = loginUser.getId();
+        //部门id
+        applicationapply.setSponsoruserid(sponsorUserId+"");
         applicationapply.setSponsordeptrid("2");
 
         return applicationapplyService.insert(applicationapply);
@@ -75,6 +87,7 @@ public class ApplicationapplyController implements IApplicationapplyController{
     /**
      * 修改
      */
+    @OperLog(operModul = "更新应用申请信息",operType = OperateType.UPDATE,operDesc = "更新应用申请信息")
     @Override
     public Boolean update(@RequestBody ApplicationapplyVO applicationapplyVO){
         Applicationapply applicationapply = new Applicationapply();
@@ -89,6 +102,7 @@ public class ApplicationapplyController implements IApplicationapplyController{
     /**
      * 删除
      */
+    @OperLog(operModul = "删除应用申请信息",operType = OperateType.DELETE,operDesc = "删除应用申请信息")
     @Override
     public Boolean delete(@RequestBody String[] ids){
         return applicationapplyService.removeByIds(Arrays.asList(ids));

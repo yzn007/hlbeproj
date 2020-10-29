@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IChargetypeController;
 import com.seaboxdata.hlbejk.api.vo.ChargetypeVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Chargetype;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.ChargetypeService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ public class ChargetypeController implements IChargetypeController{
     /**
      * 列表
      */
+    @OperLog(operModul = "查询费用类型列表",operType = OperateType.QUERY,operDesc = "查询费用类型列表")
     @Override
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = chargetypeService.queryPage(params);
@@ -41,6 +44,7 @@ public class ChargetypeController implements IChargetypeController{
     /**
      * 信息
      */
+    @OperLog(operModul = "查询费用类型信息",operType = OperateType.QUERY,operDesc = "根据id费用类型信息")
     @Override
     public ChargetypeVO info(@PathVariable("id") String id){
         Chargetype chargetype = chargetypeService.queryById(id);
@@ -52,6 +56,7 @@ public class ChargetypeController implements IChargetypeController{
     /**
      * 保存
      */
+    @OperLog(operModul = "新增费用类型信息",operType = OperateType.ADD,operDesc = "新增费用类型信息")
     @Override
     public Boolean save(@RequestBody ChargetypeVO chargetypeVO){
         Chargetype chargetype = new Chargetype();
@@ -62,6 +67,7 @@ public class ChargetypeController implements IChargetypeController{
     /**
      * 修改
      */
+    @OperLog(operModul = "更新费用类型信息",operType = OperateType.UPDATE,operDesc = "更新费用类型信息")
     @Override
     public Boolean update(@RequestBody ChargetypeVO chargetypeVO){
         Chargetype chargetype = new Chargetype();
@@ -72,6 +78,7 @@ public class ChargetypeController implements IChargetypeController{
     /**
      * 删除
      */
+    @OperLog(operModul = "删除费用类型信息",operType = OperateType.DELETE,operDesc = "删除费用类型信息")
     @Override
     public Boolean delete(@RequestBody String[] ids){
         return chargetypeService.removeByIds(Arrays.asList(ids));

@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IChargedetailController;
 import com.seaboxdata.hlbejk.api.vo.ChargedetailVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Chargedetail;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.ChargedetailService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,7 @@ public class ChargedetailController implements IChargedetailController{
      * @param userId
      * @return
      */
+    @OperLog(operModul = "根据日期和用户返回费用次数",operType = OperateType.QUERY,operDesc = "根据日期和用户返回费用次数")
     @Override
     public List queryTotal(String date, String userId) {
         return chargedetailService.queryTotal(date,userId);
@@ -43,6 +46,7 @@ public class ChargedetailController implements IChargedetailController{
     /**
      * 列表
      */
+    @OperLog(operModul = "查询费用详细信息列表",operType = OperateType.QUERY,operDesc = "查询费用详细信息列表")
     @Override
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = chargedetailService.queryPage(params);
@@ -53,6 +57,7 @@ public class ChargedetailController implements IChargedetailController{
     /**
      * 信息
      */
+    @OperLog(operModul = "查询费用详细信息",operType = OperateType.QUERY,operDesc = "根据id查询费用详细信息")
     @Override
     public ChargedetailVO info(@PathVariable("id") String id){
         Chargedetail chargedetail = chargedetailService.queryById(id);
@@ -64,6 +69,7 @@ public class ChargedetailController implements IChargedetailController{
     /**
      * 保存
      */
+    @OperLog(operModul = "新增费用详细信息",operType = OperateType.ADD,operDesc = "新增费用详细信息")
     @Override
     public Boolean save(@RequestBody ChargedetailVO chargedetailVO){
         Chargedetail chargedetail = new Chargedetail();
@@ -74,6 +80,7 @@ public class ChargedetailController implements IChargedetailController{
     /**
      * 修改
      */
+    @OperLog(operModul = "修改费用详细信息",operType = OperateType.UPDATE,operDesc = "修改费用详细信息")
     @Override
     public Boolean update(@RequestBody ChargedetailVO chargedetailVO){
         Chargedetail chargedetail = new Chargedetail();
@@ -84,6 +91,7 @@ public class ChargedetailController implements IChargedetailController{
     /**
      * 删除
      */
+    @OperLog(operModul = "删除费用详细信息",operType = OperateType.DELETE,operDesc = "删除费用详细信息")
     @Override
     public Boolean delete(@RequestBody String[] ids){
         return chargedetailService.removeByIds(Arrays.asList(ids));

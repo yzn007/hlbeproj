@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 import com.seaboxdata.hlbejk.api.controller.IDataaccessinfoController;
 import com.seaboxdata.hlbejk.api.vo.DataaccessinfoVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Dataaccessinfo;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.DataaccessinfoService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ public class DataaccessinfoController implements IDataaccessinfoController{
     /**
      * 列表
      */
+    @OperLog(operModul = "查询数据调用列表",operType = OperateType.QUERY,operDesc = "查询数据调用列表")
     @Override
     public PageUtils list(@RequestParam Map<String, Object> params){
         PageUtils page = dataaccessinfoService.queryPage(params);
@@ -41,6 +44,7 @@ public class DataaccessinfoController implements IDataaccessinfoController{
     /**
      * 信息
      */
+    @OperLog(operModul = "查询数据调用信息",operType = OperateType.QUERY,operDesc = "根据id查询数据调用信息")
     @Override
     public DataaccessinfoVO info(@PathVariable("id") String id){
         Dataaccessinfo dataaccessinfo = dataaccessinfoService.queryById(id);
@@ -52,6 +56,7 @@ public class DataaccessinfoController implements IDataaccessinfoController{
     /**
      * 保存
      */
+    @OperLog(operModul = "添加数据调用信息",operType = OperateType.ADD,operDesc = "添加数据调用信息")
     @Override
     public Boolean save(@RequestBody DataaccessinfoVO dataaccessinfoVO){
         Dataaccessinfo dataaccessinfo = new Dataaccessinfo();
@@ -62,6 +67,7 @@ public class DataaccessinfoController implements IDataaccessinfoController{
     /**
      * 修改
      */
+    @OperLog(operModul = "更新数据调用信息",operType = OperateType.UPDATE,operDesc = "更新数据调用信息")
     @Override
     public Boolean update(@RequestBody DataaccessinfoVO dataaccessinfoVO){
         Dataaccessinfo dataaccessinfo = new Dataaccessinfo();
@@ -72,6 +78,7 @@ public class DataaccessinfoController implements IDataaccessinfoController{
     /**
      * 删除
      */
+    @OperLog(operModul = "删除数据调用信息",operType = OperateType.DELETE,operDesc = "删除数据调用信息")
     @Override
     public Boolean delete(@RequestBody String[] ids){
         return dataaccessinfoService.removeByIds(Arrays.asList(ids));
