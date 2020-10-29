@@ -210,7 +210,7 @@ public class PrograminfoController implements IPrograminfoController {
      * 修改
      */
     @Override
-    @OperLog(operModul = "算法管理", operType = OperateType.ADD, operDesc = "编辑算法")
+    @OperLog(operModul = "算法管理", operType = OperateType.UPDATE, operDesc = "编辑算法")
     public Boolean update(@RequestBody PrograminfoVO programinfoVO) {
         Programinfo programinfo = new Programinfo();
         BeanUtils.copyProperties(programinfoVO, programinfo);
@@ -221,7 +221,7 @@ public class PrograminfoController implements IPrograminfoController {
      * 删除
      */
     @Override
-    @OperLog(operModul = "算法管理", operType = OperateType.ADD, operDesc = "删除算法")
+    @OperLog(operModul = "算法管理", operType = OperateType.DELETE, operDesc = "删除算法")
     public Boolean delete(@RequestBody String[] ids) {
         return programinfoService.removeByIds(Arrays.asList(ids));
     }
