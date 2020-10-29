@@ -96,7 +96,7 @@ public class OperLogAspect {
 			OperLog opLog = method.getAnnotation(OperLog.class);
 			if (opLog != null) {
 				String operModul = opLog.operModul();
-				String operType = opLog.operType();
+				String operType = opLog.operType().getCode();
 				String operDesc = opLog.operDesc();
 				operlog.setOperModul(operModul); // 操作模块
 				operlog.setOperType(operType); // 操作类型

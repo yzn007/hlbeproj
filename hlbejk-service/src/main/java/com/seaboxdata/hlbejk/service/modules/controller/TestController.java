@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.hlbejk.api.controller.IApiTestController;
 import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.TestService;
 
 @RestController
@@ -21,7 +22,7 @@ public class TestController implements IApiTestController {
 	/**
 	 * 列表
 	 */
-	@OperLog(operModul = "测试管理", operType = "test", operDesc = "测试日志注解")
+	@OperLog(operModul = "测试管理", operType = OperateType.ADD, operDesc = "测试日志注解")
 	@Override
 	public PageUtils list(@RequestParam Map<String, Object> params) {
 		PageUtils page = testService.list(params);

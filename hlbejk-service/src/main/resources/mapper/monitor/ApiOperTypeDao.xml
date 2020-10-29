@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.ApiOperTypeDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap id="operateTypeMap" type="com.seaboxdata.hlbejk.api.vo.ApiOperateTypeVO" >
+        <result property="id" column="id"/>
+        <result property="typeCode" column="type_code"/>
+        <result property="typeDesc" column="type_desc"/>
+    </resultMap>
+
+    <select id="queryList" resultMap="operateTypeMap">
+		SELECT
+		    t.id,
+		    t.type_code,
+		    t.type_desc
+		FROM
+		    operate_type t
+		ORDER BY
+		    t.id ASC		
+    </select>
+
+</mapper>

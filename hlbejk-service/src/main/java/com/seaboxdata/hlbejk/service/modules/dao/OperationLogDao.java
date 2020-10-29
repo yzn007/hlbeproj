@@ -19,7 +19,7 @@ import com.seaboxdata.hlbejk.service.modules.entity.OperationLog;
 public interface OperationLogDao extends BaseMapper<OperationLog> {
 
 	IPage<OperationLog> queryPage(IPage<OperationLog> page, @Param("operUserName") String operUserName,
-			@Param("typeOrModul") String typeOrModul, @Param("startDate") String startDate,
+			@Param("operType") String operType, @Param("operModul") String operModul,@Param("startDate") String startDate,
 			@Param("endDate") String endDate);
 
 }

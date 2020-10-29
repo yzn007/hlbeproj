@@ -6,6 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
+
 /**
  * 自定义操作日志注解
  * 
@@ -17,7 +19,7 @@ import java.lang.annotation.Target;
 public @interface OperLog {
 	String operModul() default ""; // 操作模块
 
-	String operType() default ""; // 操作类型
+	OperateType operType() default OperateType.UNKNOWN; // 操作类型
 
 	String operDesc() default ""; // 操作说明
 }

@@ -7,7 +7,7 @@
 		SELECT
 		    t.oper_id,
 		    t.oper_modul,
-		    t.oper_type,
+		    a.type_desc oper_type,,
 		    t.oper_desc,
 		    t.oper_requ_param,
 		    t.oper_resp_param,
@@ -19,13 +19,20 @@
 		    DATE_FORMAT(t.oper_create_time, '%Y-%m-%d %H:%i:%s') oper_create_time,
 		    t.oper_ver
 		FROM
-		    operation_log t 
+		    operation_log t
+		LEFT JOIN
+		    operate_type a
+		ON
+		    t.oper_type = a.type_code
 		<where>
 			<if test="operUserName!='' and operUserName!=null">
 				t.oper_user_name LIKE concat('%',#{operUserName},'%')
 			</if>
-			<if test="typeOrModul!='' and typeOrModul!=null">
-				and (t.oper_modul LIKE concat('%',#{typeOrModul},'%') or t.oper_type LIKE concat('%',#{typeOrModul},'%'))
+			<if test="operType!='' and operType!=null">
+				and t.oper_type LIKE concat('%',#{operType},'%')
+			</if>
+			<if test="operModul!='' and operModul!=null">
+				and t.oper_modul LIKE concat('%',#{operModul},'%')
 			</if>
 			<if test="startDate!='' and startDate!=null">
 				and t.oper_create_time &gt;= STR_TO_DATE(#{startDate}, '%Y-%m-%d %H:%i:%s')

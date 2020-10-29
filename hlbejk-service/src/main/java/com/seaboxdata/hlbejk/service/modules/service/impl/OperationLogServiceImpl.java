@@ -19,11 +19,12 @@ public class OperationLogServiceImpl extends ServiceImpl<OperationLogDao, Operat
 	@Override
 	public PageUtils queryPage(Map<String, Object> params) {
 		String operUserName = (String) params.get("operUserName");
-		String typeOrModul = (String) params.get("typeOrModul");
+		String operType = (String) params.get("operType");
+		String operModul = (String) params.get("operModul");
 		String startDate = (String) params.get("startDate");
 		String endDate = (String) params.get("endDate");
 		IPage<OperationLog> page = this.baseMapper.queryPage(new Query<OperationLog>().getPage(params), operUserName,
-				typeOrModul, startDate, endDate);
+				operType, operModul, startDate, endDate);
 
 		return new PageUtils(page);
 	}
