@@ -8,7 +8,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.seaboxdata.hlbejk.api.controller.IPrograminfoController;
 import com.seaboxdata.hlbejk.api.vo.PrograminfoVO;
+import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.Programinfo;
+import com.seaboxdata.hlbejk.service.modules.enums.OperateType;
 import com.seaboxdata.hlbejk.service.modules.service.PrograminfoService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.hlbejk.service.utils.HttpClientUtils;
@@ -121,6 +123,7 @@ public class PrograminfoController implements IPrograminfoController {
     }
 
     @Override
+    @OperLog(operModul = "算法信息", operType = OperateType.QUERY, operDesc = "查看算法详细信息")
     public PrograminfoVO programDetail(Map param) {
 //        //测试
 //        String ret = HttpClientUtils.returnTest(true, true, param.get("programid").toString());
@@ -173,6 +176,7 @@ public class PrograminfoController implements IPrograminfoController {
      * 列表
      */
     @Override
+    @OperLog(operModul = "算法管理", operType = OperateType.QUERY, operDesc = "查询算法")
     public PageUtils list(@RequestParam Map<String, Object> params) {
         PageUtils page = programinfoService.queryPage(params);
         return page;
@@ -195,6 +199,7 @@ public class PrograminfoController implements IPrograminfoController {
      * 保存
      */
     @Override
+    @OperLog(operModul = "算法管理", operType = OperateType.ADD, operDesc = "增加算法")
     public Boolean save(@RequestBody PrograminfoVO programinfoVO) {
         Programinfo programinfo = new Programinfo();
         BeanUtils.copyProperties(programinfoVO, programinfo);
@@ -205,6 +210,7 @@ public class PrograminfoController implements IPrograminfoController {
      * 修改
      */
     @Override
+    @OperLog(operModul = "算法管理", operType = OperateType.ADD, operDesc = "编辑算法")
     public Boolean update(@RequestBody PrograminfoVO programinfoVO) {
         Programinfo programinfo = new Programinfo();
         BeanUtils.copyProperties(programinfoVO, programinfo);
@@ -215,6 +221,7 @@ public class PrograminfoController implements IPrograminfoController {
      * 删除
      */
     @Override
+    @OperLog(operModul = "算法管理", operType = OperateType.ADD, operDesc = "删除算法")
     public Boolean delete(@RequestBody String[] ids) {
         return programinfoService.removeByIds(Arrays.asList(ids));
     }

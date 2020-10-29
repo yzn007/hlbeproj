@@ -1,14 +1,17 @@
 package com.seaboxdata.hlbejk.service.modules.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.seaboxdata.authuc.api.service.AuthUserInService;
 import com.seaboxdata.hlbejk.service.modules.dao.PrograminfoDao;
 import com.seaboxdata.hlbejk.service.modules.entity.Programinfo;
 import com.seaboxdata.hlbejk.service.modules.service.PrograminfoService;
 import com.seaboxdata.commons.core.util.api.PageUtils;
 import com.seaboxdata.commons.core.util.api.Query;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Console;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -43,6 +46,11 @@ public class PrograminfoServiceImpl extends ServiceImpl<PrograminfoDao, Programi
                 e.printStackTrace();
             }
         }
+        try{
+            System.out.println(authUserInService.getLoginUser().getName());
+            System.out.println(authUserInService.getUserByParamsByTenantId(authUserInService.getLoginUser().getTenantId()).toString());
+        }catch (Exception ex){
+        }
         return new PageUtils(page);
     }
 
@@ -63,5 +71,7 @@ public class PrograminfoServiceImpl extends ServiceImpl<PrograminfoDao, Programi
         this.updateById(programinfo);
         return true;
     }
+    @Autowired
+    AuthUserInService authUserInService;
 
 }
