@@ -14,6 +14,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
@@ -21,6 +22,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import com.alibaba.fastjson.JSON;
 import com.seaboxdata.authuc.api.service.AuthUserInService;
+import com.seaboxdata.hlbejk.api.vo.ExceptionLogVO;
+import com.seaboxdata.hlbejk.api.vo.OperationLogVO;
 import com.seaboxdata.hlbejk.common.utils.IPUtil;
 import com.seaboxdata.hlbejk.common.utils.annotation.OperLog;
 import com.seaboxdata.hlbejk.service.modules.entity.ExceptionLog;
@@ -84,9 +87,9 @@ public class OperLogAspect {
 		HttpServletRequest request = (HttpServletRequest) requestAttributes
 				.resolveReference(RequestAttributes.REFERENCE_REQUEST);
 		
-		OperationLog operlog = new OperationLog();
+		OperationLogVO operLogVO = new OperationLogVO();
 		try {
-			operlog.setOperId(UUID.randomUUID().toString()); // 主键ID
+			operLogVO.setOperId(UUID.randomUUID().toString()); // 主键ID
 
 			// 从切面织入点处通过反射机制获取织入点处的方法
 			MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -98,9 +101,9 @@ public class OperLogAspect {
 				String operModul = opLog.operModul();
 				String operType = opLog.operType().getCode();
 				String operDesc = opLog.operDesc();
-				operlog.setOperModul(operModul); // 操作模块
-				operlog.setOperType(operType); // 操作类型
-				operlog.setOperDesc(operDesc); // 操作描述
+				operLogVO.setOperModul(operModul); // 操作模块
+				operLogVO.setOperType(operType); // 操作类型
+				operLogVO.setOperDesc(operDesc); // 操作描述
 			}
 			// 获取请求的类名
 			String className = joinPoint.getTarget().getClass().getName();
@@ -108,22 +111,25 @@ public class OperLogAspect {
 			String methodName = method.getName();
 			methodName = className + "." + methodName;
 
-			operlog.setOperMethod(methodName); // 请求方法
+			operLogVO.setOperMethod(methodName); // 请求方法
 
 			// 请求的参数
 			Map<String, String> rtnMap = converMap(request.getParameterMap());
 			// 将参数所在的数组转换成json
 			String params = JSON.toJSONString(rtnMap);
 
-			operlog.setOperRequParam(params); // 请求参数
-			operlog.setOperRespParam(JSON.toJSONString(keys)); // 返回结果
-			operlog.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 请求用户ID
-			operlog.setOperUserName(authUserInService.getLoginUser().getName()); // 请求用户名称
-			operlog.setOperIp(IPUtil.getRemortIP(request)); // 请求IP
-			operlog.setOperUri(request.getRequestURI()); // 请求URI
-			operlog.setOperCreateTime(new Date()); // 创建时间
-			operlog.setOperVer(operVer); // 操作版本
-			operationLogService.insert(operlog);
+			operLogVO.setOperRequParam(params); // 请求参数
+			operLogVO.setOperRespParam(JSON.toJSONString(keys)); // 返回结果
+			operLogVO.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 请求用户ID
+			operLogVO.setOperUserName(authUserInService.getLoginUser().getName()); // 请求用户名称
+			operLogVO.setOperIp(IPUtil.getRemortIP(request)); // 请求IP
+			operLogVO.setOperUri(request.getRequestURI()); // 请求URI
+			operLogVO.setOperCreateTime(new Date()); // 创建时间
+			operLogVO.setOperVer(operVer); // 操作版本
+			
+			OperationLog operLog = new OperationLog();
+	        BeanUtils.copyProperties(operLogVO, operLog);
+			operationLogService.insert(operLog);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -145,13 +151,13 @@ public class OperLogAspect {
 		HttpServletRequest request = (HttpServletRequest) requestAttributes
 				.resolveReference(RequestAttributes.REFERENCE_REQUEST);
 
-		ExceptionLog excepLog = new ExceptionLog();
+		ExceptionLogVO excepLogVO = new ExceptionLogVO();
 		try {
 			// 从切面织入点处通过反射机制获取织入点处的方法
 			MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 			// 获取切入点所在的方法
 			Method method = signature.getMethod();
-			excepLog.setExcId(UUID.randomUUID().toString());
+			excepLogVO.setExcId(UUID.randomUUID().toString());
 			// 获取请求的类名
 			String className = joinPoint.getTarget().getClass().getName();
 			// 获取请求的方法名
@@ -161,19 +167,21 @@ public class OperLogAspect {
 			Map<String, String> rtnMap = converMap(request.getParameterMap());
 			// 将参数所在的数组转换成json
 			String params = JSON.toJSONString(rtnMap);
-			excepLog.setExcRequParam(params); // 请求参数
-			excepLog.setOperMethod(methodName); // 请求方法名
-			excepLog.setExcName(e.getClass().getName()); // 异常名称
-			excepLog.setExcMessage(stackTraceToString(e.getClass().getName(), e.getMessage(), e.getStackTrace())); // 异常信息
-			excepLog.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 操作员ID
-			excepLog.setOperUserName(authUserInService.getLoginUser().getName()); // 操作员名称
-			excepLog.setOperUri(request.getRequestURI()); // 操作URI
-			excepLog.setOperIp(IPUtil.getRemortIP(request)); // 操作员IP
-			excepLog.setOperVer(operVer); // 操作版本号
-			excepLog.setOperCreateTime(new Date()); // 发生异常时间
-
+			excepLogVO.setExcRequParam(params); // 请求参数
+			excepLogVO.setOperMethod(methodName); // 请求方法名
+			excepLogVO.setExcName(e.getClass().getName()); // 异常名称
+			excepLogVO.setExcMessage(stackTraceToString(e.getClass().getName(), e.getMessage(), e.getStackTrace())); // 异常信息
+			excepLogVO.setOperUserId(authUserInService.getLoginUser().getId().toString()); // 操作员ID
+			excepLogVO.setOperUserName(authUserInService.getLoginUser().getName()); // 操作员名称
+			excepLogVO.setOperUri(request.getRequestURI()); // 操作URI
+			excepLogVO.setOperIp(IPUtil.getRemortIP(request)); // 操作员IP
+			excepLogVO.setOperVer(operVer); // 操作版本号
+			excepLogVO.setOperCreateTime(new Date()); // 发生异常时间
+			
+			ExceptionLog excepLog = new ExceptionLog();
+			
+			BeanUtils.copyProperties(excepLogVO, excepLog);
 			exceptionLogService.insert(excepLog);
-
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}

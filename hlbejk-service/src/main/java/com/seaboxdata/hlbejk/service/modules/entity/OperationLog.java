@@ -35,9 +35,8 @@ public class OperationLog implements Serializable{
     private String operUserName; // 请求用户名称
     private String operIp; // 请求IP
     private String operUri; // 请求URI
-    @TableField(fill = FieldFill.INSERT)
-    private Date OperCreateTime; // 创建时间
-    private String OperVer; // 操作版本
+    private Date operCreateTime; // 创建时间
+    private String operVer; // 操作版本
 
 
 }
