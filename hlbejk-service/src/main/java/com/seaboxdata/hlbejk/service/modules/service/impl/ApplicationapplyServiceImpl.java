@@ -31,14 +31,12 @@ public class ApplicationapplyServiceImpl extends ServiceImpl<ApplicationapplyDao
             }else{
                 queryWrapper.eq("applyState",params.get("applyState"));
             }
-            queryWrapper.orderByDesc("applyTime","updateTimes");
         }
-
+            queryWrapper = (QueryWrapper) queryWrapper.select().orderByDesc("applyTime");
         IPage<Applicationapply> page = this.page(
                 new Query<Applicationapply>().getPage(params),
                 queryWrapper
         );
-
         return new PageUtils(page);
     }
 
