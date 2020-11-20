@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.ResourceAccessReportDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.api.vo.ResourceAccessReportVO" id="resourceMap">
+        <result property="systemName" column="system_name"/>
+        <result property="resourceName" column="resource_name"/>
+        <result property="visitsNum" column="visits_num"/>
+        <result property="dataFlow" column="data_flow"/>
+    </resultMap>
+
+    <!-- 按名称返回取得资源 -->
+    <select id="queryResourceAccessReport" resultMap="resourceMap">
+        select ra.system_name,rar.data_flow,rar.visits_num,rar.resource_name from resource_access_report rar
+        left join resources_service rs
+        on rar.service_code = rs.service_code LEFT JOIN resources_apply ra on  ra.id = rs.apply_id
+
+        where 1=1
+    <if test="param.startdate!=null and param.enddate!=null">
+        and DATE_FORMAT(rar.log_date,'%Y-%m-%d %H:%i:%s') BETWEEN #{param.startdate} and #{param.enddate}
+    </if>
+
+        order by  DATE_FORMAT(rar.log_date,'%Y-%m-%d %H:%i:%s') desc
+        limit #{param.offset},#{param.limit}
+
+    </select>
+
+    <select id="queryResourceTotal" resultType="long">
+        select count(ra.id) from resource_access_report rar
+        left join resources_service rs
+        on rar.service_code = rs.service_code LEFT JOIN resources_apply ra on  ra.id = rs.apply_id
+
+        where 1=1
+        <if test="param.startdate!=null and param.enddate!=null">
+            and DATE_FORMAT(rar.log_date,'%Y-%m-%d %H:%i:%s') BETWEEN #{param.startdate} and #{param.enddate}
+        </if>
+
+    </select>
+
+</mapper>

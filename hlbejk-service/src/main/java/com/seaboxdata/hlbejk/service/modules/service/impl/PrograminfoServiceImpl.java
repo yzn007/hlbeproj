@@ -46,11 +46,11 @@ public class PrograminfoServiceImpl extends ServiceImpl<PrograminfoDao, Programi
                 e.printStackTrace();
             }
         }
-        try{
-            System.out.println(authUserInService.getLoginUser().getName());
-            System.out.println(authUserInService.getUserByParamsByTenantId(authUserInService.getLoginUser().getTenantId()).toString());
-        }catch (Exception ex){
-        }
+//        try{
+//            System.out.println(authUserInService.getLoginUser().getName());
+//            System.out.println(authUserInService.getUserByParamsByTenantId(authUserInService.getLoginUser().getTenantId()).toString());
+//        }catch (Exception ex){
+//        }
         return new PageUtils(page);
     }
 
