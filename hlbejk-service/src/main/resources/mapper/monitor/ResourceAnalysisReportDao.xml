@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.ResourceAnalysisReportDao">
+
+    <select id="queryPage" resultType="com.seaboxdata.hlbejk.service.modules.entity.ResourceAccessReport">
+		SELECT
+		    ( @rownum := @rownum + 1 ) AS id,
+		    t.organization_name,
+		    t.resource_name,
+		    t.visits_num,
+		    t.data_flow
+		FROM
+		    (
+		        SELECT
+		            becalldept AS organization_name,
+		            resource_name,
+		            SUM( becallnum ) visits_num,
+		            SUM( dataflow )  data_flow
+		        FROM
+		            resource_call_count report
+				<where>
+					<if test="startDate !=null and endDate !=null">
+						and log_date &gt;= #{startDate} and log_date &lt;= #{endDate}
+					</if>
+					<if test="dateEnum !=null and dateEnum !='' ">
+						and log_date &gt;= #{dateEnum}
+					</if>
+				</where>
+		        GROUP BY
+		            becalldept,
+		            resource_name
+		        ORDER BY
+		            SUM( becallnum ) DESC ) t,
+		    (
+		        SELECT
+		            @rownum := 0 ) b
+
+    </select>
+
+</mapper>
