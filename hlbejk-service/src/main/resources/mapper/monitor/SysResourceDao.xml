@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.SysResourceDao">
+
+    <select id="queryResource" parameterType="java.util.Set" resultType="com.seaboxdata.hlbejk.service.modules.entity.SysResource">
+		SELECT
+			t.ID,
+			t.NAME,
+			t.ALIAS,
+			t.SN,
+			t.ICON,
+			t.CLS,
+			t.RESOURCE_TYPE,
+			t.PARENT_ID,
+			t.DEFAULT_URL,
+			t.IS_OPEN,
+			t.IS_LEAF,
+			t.DESC 
+		FROM
+			sys_resource t 
+		WHERE
+			t.ALIAS IN 
+			<foreach collection="pcodes" open="(" close = ")" item = "item" index = "index" separator=",">
+		        #{item}
+		    </foreach>
+		ORDER BY
+		    t.PARENT_ID,
+		    t.SN
+    </select>
+
+</mapper>
