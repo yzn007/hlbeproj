@@ -20,6 +20,6 @@ import com.seaboxdata.hlbejk.service.modules.entity.SysResource;
 @Mapper
 public interface SysResourceDao extends BaseMapper<SysResource> {
 
-	List<SysResource> queryResource(@Param("pcodes")Set<String> permissionCodes);
+	List<SysResource> queryResource(@Param("pcodes")Set<String> permissionCodes, @Param("systemCode")String systemCode);
 
 }

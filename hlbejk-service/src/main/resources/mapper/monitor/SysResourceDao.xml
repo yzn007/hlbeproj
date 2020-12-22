@@ -20,6 +20,8 @@
 		FROM
 			sys_resource t 
 		WHERE
+			t.system_code = #{systemCode}
+		AND	
 			t.ALIAS IN 
 			<foreach collection="pcodes" open="(" close = ")" item = "item" index = "index" separator=",">
 		        #{item}

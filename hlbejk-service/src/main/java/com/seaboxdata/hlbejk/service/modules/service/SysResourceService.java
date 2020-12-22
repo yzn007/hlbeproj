@@ -8,6 +8,6 @@ import com.seaboxdata.hlbejk.service.modules.entity.SysResource;
 
 public interface SysResourceService extends IService<SysResource>{
 
-	List<SysResource> queryResource(Set<String> permissionCodes);
+	List<SysResource> queryResource(Set<String> permissionCodes, String systemCode);
 
 }

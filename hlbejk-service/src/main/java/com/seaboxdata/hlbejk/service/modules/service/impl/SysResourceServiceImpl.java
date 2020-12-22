@@ -15,8 +15,8 @@ import com.seaboxdata.hlbejk.service.utils.ResourceTreeUtils;
 public class SysResourceServiceImpl extends ServiceImpl<SysResourceDao, SysResource> implements SysResourceService {
 
 	@Override
-	public List<SysResource> queryResource(Set<String> permissionCodes) {
-		List<SysResource> list = this.baseMapper.queryResource(permissionCodes);
+	public List<SysResource> queryResource(Set<String> permissionCodes, String systemCode) {
+		List<SysResource> list = this.baseMapper.queryResource(permissionCodes, systemCode);
 
 		List<SysResource> treeList = ResourceTreeUtils.buidTree(list);
 		
