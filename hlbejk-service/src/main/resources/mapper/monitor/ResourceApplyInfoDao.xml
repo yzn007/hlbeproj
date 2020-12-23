@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seaboxdata.hlbejk.service.modules.dao.ResourceApplyInfoDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.seaboxdata.hlbejk.service.modules.entity.ResourceApplyListInfo" id="resourceMap">
+        <result property="createOrgan" column="create_organ"/>
+        <result property="creator" column="creator"/>
+        <result property="createTm" column="create_tm"/>
+        <result property="reviewStatus" column="review_status"/>
+        <result property="id" column="id"/>
+        <result property="applyReason" column="apply_reason"></result>
+        <result property="resourceName" column="resource_name"></result>
+        <result property="resourceCode" column="resource_code"></result>
+        <result property="organizationId" column="organization_id"></result>
+        <result property="organizationName" column="organization_name"></result>
+    </resultMap>
+    <!-- 按名称返回取得资源 -->
+    <select id="queryResource" resultMap="resourceMap">
+        SELECT 
+		  a.create_organ,
+		  a.creator,
+		  a.create_tm,
+		  a.review_status,
+		  a.id,
+		  a.apply_reason,
+		  b.resource_name,
+		  b.resource_code,
+		  b.organization_id,
+		  b.organization_name 
+		FROM
+		  resources_apply_sum a 
+		  INNER JOIN resources_catalogue b 
+		    ON a.res_id = b.id 
+		    AND a.tenant_id = b.tenant_id 
+		    AND a.del_status = b.del_status
+		    WHERE b.del_status = 0 
+		<if test="apply.createOrgan!=null and apply.createOrgan!=0 and apply.createOrgan != ''">
+			and a.create_organ =#{apply.createOrgan}
+		</if>
+		<if test="apply.creator!=null and apply.creator!=0 and apply.creator != ''">
+			and a.creator =#{apply.creator}
+		</if>
+		<if test="apply.reviewStatus != null and apply.reviewStatus != ''">
+			and a.review_status =#{apply.reviewStatus}
+		</if>
+		<if test="apply.id!=null and apply.id!=0 and apply.id != ''">
+			and a.id =#{apply.id}
+		</if>
+		 <if test="apply.resourceName != null and apply.resourceName != ''">
+			and b.resource_name LIKE CONCAT(CONCAT('%', #{apply.resourceName}), '%')
+		</if>
+			order by a.create_tm desc
+    </select>
+
+    
+</mapper>

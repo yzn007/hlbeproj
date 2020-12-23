@@ -1,3 +1,7 @@
+seaboxdata:
+  rsp:
+    hostname: 
+
 spring:
   redis:
 #    database: 0
@@ -16,12 +20,12 @@ spring:
       primary: master #设置默认的数据源或者数据源组,默认值即为master
       datasource:
         master:
-          url: jdbc:mysql://127.0.0.1:3307/yunyingjianguan117?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          url: jdbc:mysql://127.0.0.1:3306/mysql?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
           password: 123456
           driverClassName: com.mysql.cj.jdbc.Driver
         corc:
-          url: jdbc:mysql://127.0.0.1:3307/resourceapply?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          url: jdbc:mysql://127.0.0.1:3306/hlbe?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
           password: 123456
           driverClassName: com.mysql.cj.jdbc.Driver
@@ -43,13 +47,13 @@ auth:
   systemCode: template #本系统在auth的auth_system或者oauth_system中配置的system_code或者app_name
 
 #template服务地址，本服务可以不用配置
-template-service-url: http://cloud.dfjx.com:30075
+template-service-url: http://ac.ztdemo.com
 
 #用户中心服务地址
-auth-service-url: http://cloud.dfjx.com:30002
+auth-service-url: http://ac.ztdemo.com
 
 #认证中心服务地址
-auth-server-url: http://cloud.dfjx.com:30002
+auth-server-url: http://ac.ztdemo.com
 security:
   oauth2:
     client:
@@ -82,4 +86,4 @@ token:
 logging:
   level:
     "org.springframework": info
-    com.seaboxdata.template.service.modules.dao: debug
+    com.seaboxdata.hlbejk.service.modules.dao: debug
