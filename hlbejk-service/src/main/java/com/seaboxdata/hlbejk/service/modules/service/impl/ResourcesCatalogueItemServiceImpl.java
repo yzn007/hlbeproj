@@ -61,22 +61,6 @@ public class ResourcesCatalogueItemServiceImpl extends ServiceImpl<ResourcesCata
 		String accessRate = Double.isNaN(count5) ? "0" : this.doubleRoundingMode(count5);
 		String accessQualificationRate = Double.isNaN(count6) ? "0" : this.doubleRoundingMode(count6);
 		
-		if(compilationRate.equals("NaN")) {
-			compilationRate ="0";
-		}
-		
-		if(resourceDirectoryRate.equals("NaN")) {
-			resourceDirectoryRate ="0";
-		}
-		
-		if(accessRate.equals("NaN")) {
-			accessRate ="0";
-		}
-		
-		if(accessQualificationRate.equals("NaN")) {
-			accessQualificationRate ="0";
-		}
-		
 		accessRateVO.setAccessQualificationRate(accessQualificationRate);
 		accessRateVO.setAccessRate(accessRate);
 		accessRateVO.setCompilationRate(compilationRate);
