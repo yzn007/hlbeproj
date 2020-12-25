@@ -55,11 +55,11 @@ public class ResourcesCatalogueItemServiceImpl extends ServiceImpl<ResourcesCata
 		double count5 = Double.valueOf(count3)/Double.valueOf(count1);
 		//接入合格率
 		double count6 = Double.valueOf(count4)/Double.valueOf(count2);
-	
-		String compilationRate = this.doubleRoundingMode(count11);
-		String resourceDirectoryRate = this.doubleRoundingMode(count12);
-		String accessRate = this.doubleRoundingMode(count5);
-		String accessQualificationRate = this.doubleRoundingMode(count6);
+		
+		String compilationRate = Double.isNaN(count11) ? "0" : this.doubleRoundingMode(count11);
+		String resourceDirectoryRate = Double.isNaN(count12) ? "0" : this.doubleRoundingMode(count12);
+		String accessRate = Double.isNaN(count5) ? "0" : this.doubleRoundingMode(count5);
+		String accessQualificationRate = Double.isNaN(count6) ? "0" : this.doubleRoundingMode(count6);
 		
 		if(compilationRate.equals("NaN")) {
 			compilationRate ="0";
